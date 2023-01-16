@@ -1,0 +1,68 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<html   xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" 
+        xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers" 
+        data-namespace-typo3-fluid="true">
+<f:comment>
+<ce:menu.directory pageUids="{pageUids}" as="pages" levelAs="level">
+    <f:if condition="{pages}">
+        <div class="text_actuality_two_">
+            <div class="row" style="margin-bottom: 3em;">
+                <f:for each="{pages}" as="page" iteration="iterator">
+                    {v:resource.record.fal(record: page, field: 'media', table: 'pages') -> v:variable.set(name: 'pageMedia')}
+                    
+                    <f:if condition="{iterator.cycle} % 4">
+                        <f:then>
+                            <f:render section="repeat" arguments="{_all}" />
+
+                        </f:then>
+                        <f:else>
+                            <f:render section="repeat" arguments="{_all}" />
+                            
+                            <f:if condition="{iterator.isLast} != '1'">
+                                </div>
+                                <div class="row" style="margin-bottom: 3em;">
+                            </f:if>
+
+                        </f:else>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+</ce:menu.directory>    
+</f:comment>
+
+<ce:menu.directory pageUids="{pageUids}" as="pages" levelAs="level">
+    <f:if condition="{pages}">
+        <div class="text_actuality_two_">
+            <div class="row" style="margin-bottom: 3em; display: flex; flex-wrap: wrap">
+                <f:for each="{pages}" as="page" iteration="iterator">
+                    {v:resource.record.fal(record: page, field: 'media', table: 'pages') -> v:variable.set(name: 'pageMedia')}
+                        <f:render section="repeat" arguments="{_all}" />
+
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+</ce:menu.directory>
+
+<f:section name="repeat">
+    <div data-tag="wszystkie {page.abstract} {f:format.date(format:'Y', date:'{page.starttime}')}"  data-type="project" class="col-md-3 col-sm-6 col-xs-12 item">
+        <div class="small_pictures_and_text">
+            <f:link.page pageUid="{page.uid}" title="{page.title}">
+                <f:if condition="{pageMedia}">
+                    <f:if condition="{pageMedia.0.type} == 2">
+                        <f:image src="/{pageMedia.0.url}" width="510c" height="412c" class="img-responsive" crop="{pageMedia.0.crop}"/>
+                    </f:if>
+                </f:if>
+                <p>{page.title}</p>
+            </f:link.page>
+            <div class="moretwo">
+                <f:link.page pageUid="{page.uid}" title="{page.title}">więcej...</f:link.page>
+            </div>
+        </div>
+    </div>
+
+</f:section>
+</html>

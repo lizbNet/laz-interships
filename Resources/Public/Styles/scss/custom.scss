@@ -1,0 +1,421 @@
+$assetPath: "/typo3conf/ext/lazarski_interships/Resources/Public";
+$primary: #f26f21;
+$font-family-base: "Open sans", Font, -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol";
+
+$blue: #194977 !default;
+$enable-responsive-font-sizes: true;
+$body-bg: #F3F3F3;
+$card-border-color: #E4E4E4;
+$enable-negative-margins: true;
+$input-bg: #ffffff;
+
+
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar, .ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners {
+    border-top-left-radius: 0.375rem !important;
+    border-top-right-radius: 0.375rem !important;
+}
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+    border-bottom-left-radius: 0.375rem !important;
+    border-bottom-right-radius: 0.375rem !important;
+}
+.mandatory .mandatory {
+    display: inline-block !important;
+}
+@import "../bootstrap/scss/bootstrap";
+// @import "checkbox";
+
+// @font-face{
+//   font-family:"Font";
+//   font-weight: 400; 
+//   src:url("#{$assetPath}/Fonts/DIN/5591093/5eb0af6c-78f3-4b41-a963-221e4bbae0a3.eot?#iefix");
+//   src:url("#{$assetPath}/Fonts/DIN/5591093/5eb0af6c-78f3-4b41-a963-221e4bbae0a3.eot?#iefix") format("eot"),url("#{$assetPath}/Fonts/DIN/5591093/89495911-441c-4a94-b785-8fbbde758233.woff2") format("woff2"),url("#{$assetPath}/Fonts/DIN/5591093/27e61977-1c85-4892-b030-9d3339639298.woff") format("woff"),url("#{$assetPath}/Fonts/DIN/5591093/38c9d500-4abf-4486-a088-30b4c9233d29.ttf") format("truetype");
+// }
+// @font-face{
+//   font-family:"Font";
+//   font-weight: 500; 
+//   src:url("#{$assetPath}/Fonts/DIN/5591109/2faca088-c5cd-4839-8d0d-9114e46a2fa9.eot?#iefix");
+//   src:url("#{$assetPath}/Fonts/DIN/5591109/2faca088-c5cd-4839-8d0d-9114e46a2fa9.eot?#iefix") format("eot"),url("#{$assetPath}/Fonts/DIN/5591109/3a97d711-0278-4fcc-9527-37e7911bcfb7.woff2") format("woff2"),url("#{$assetPath}/Fonts/DIN/5591109/8491ec80-cec4-4e7a-8c3a-27c0cf767c12.woff") format("woff"),url("#{$assetPath}/Fonts/DIN/5591109/f28d8edb-74fe-471d-b259-11e0398960b9.ttf") format("truetype");
+// }
+// @font-face{
+//   font-family:"Font";
+//   font-weight: 700; 
+//   src:url("#{$assetPath}/Fonts/DIN/Fonts/5591152/5cbfa3ad-511c-4785-ae05-ddd8592e98d4.eot?#iefix");
+//   src:url("#{$assetPath}/Fonts/DIN/5591152/5cbfa3ad-511c-4785-ae05-ddd8592e98d4.eot?#iefix") format("eot"),url("#{$assetPath}/Fonts/DIN/5591152/f3fd776a-e956-40dc-9b24-97db1b46fce0.woff2") format("woff2"),url("#{$assetPath}/Fonts/DIN/5591152/f7b2042d-50ab-4d6b-be47-e0552322ccb0.woff") format("woff"),url("#{$assetPath}/Fonts/DIN/5591152/0e078204-50a7-4c49-8e75-2cde9db891df.ttf") format("truetype");
+// }
+
+
+.btn-primary {
+    color: #ffffff;
+}
+.has-error,
+.parsley-error {
+    @extend .is-invalid;
+}
+
+.has-success,
+.parsley-success {
+    @extend .is-valid;
+}
+
+.parsley-errors-list.filled {
+    @extend .invalid-feedback;
+}
+
+.powermail_message.powermail_message_error {
+    display: none;
+}
+
+.powermail_create p {
+    color: $primary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    // color: $primary;
+}
+
+form.nolabel>h3,
+.nolabel>legend,
+div.nolabel>label {
+    display: none;
+}
+
+body > footer {
+    background-color: $gray-200;
+}
+
+body > header {
+    background-color: #fff;
+}
+
+.logo {
+    height: 4em;
+    width: auto;
+}
+
+.invalid-feedback {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-checkbox.is-invalid .invalid-feedback,
+.custom-radio.is-invalid .invalid-feedback {
+    display: block;
+}
+
+.custom-checkbox.is-invalid .custom-control-label::before,
+.custom-radio.is-invalid .custom-control-label::before {
+    background-color: #efa2a9;
+}
+
+.custom-checkbox.is-invalid .custom-control-label,
+.custom-radio.is-invalid .custom-control-label {
+    color: #dc3545;
+}
+
+.contenttable {
+    @extend .table;
+    @extend .w-100;
+    @extend .my-2;
+    @extend .border-top;
+}
+
+.powermail_fieldwrap_table_head>div {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: solid 2px #dee2e6;
+
+    label {
+        font-weight: 700;
+        color: #f26f21;
+    }
+}
+
+label .btn-sm {
+    padding: 0 0.3rem 0 0.3rem;
+    font-size: inherit;
+    margin-top: -.2rem;
+}
+
+#language-menu {
+    list-style: none;
+    padding-left: 0;
+
+    li,
+    a {
+        display: inline;
+    }
+
+    >.current {
+        display: none;
+    }
+
+    img {
+        height: 20px;
+        width: 42px;
+    }
+}
+
+.card {
+    h4 {
+        font-size: 1.125rem;
+    }
+
+    p {
+        font-size: 0.875rem;
+
+    }
+
+    p small {
+        font-size: 0.75rem;
+        color: #707070;
+    }
+}
+
+#powermail_fieldwrap_offer_type {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 60%;
+    flex: 0 0 auto;
+    justify-self: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.powermail_confirmation .btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+#hero-bg:after {
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background: #272793;
+    mix-blend-mode:color;
+}
+#hero-bg:before {
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    filter:brightness(0.6); 
+    // background-image:url('https://source.unsplash.com/random/900×700/?young,worker'); 
+    background-image:url('/typo3conf/ext/lazarski_interships/Resources/Public/Images/bg-top-01.jpg'); 
+    background-size:cover; 
+    background-position:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --white: #fff;
+    --light: #f0eff3;
+    --black: #000;
+    --dark-blue: #1f2029;
+    --dark-light: #353746;
+    --red: #da2c4d;
+    --yellow: #f8ab37;
+    --grey: #ecedf3;
+}
+
+/* #Primary
+ ================================================== */
+::selection {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+::-moz-selection {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.powermail_fieldwrap_offer_type [type="checkbox"]:checked,
+.powermail_fieldwrap_offer_type [type="checkbox"]:not(:checked),
+.powermail_fieldwrap_offer_type [type="radio"]:checked,
+.powermail_fieldwrap_offer_type [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.checkbox-tools:checked+label,
+.checkbox-tools:not(:checked)+label,
+.powermail_fieldwrap_offer_type .powermail_radio:checked+label,
+.powermail_fieldwrap_offer_type .powermail_radio:not(:checked)+label {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: var(--white);
+    -webkit-transition: all 300ms linear;
+    transition: all 300ms linear;
+}
+
+.checkbox-tools:not(:checked)+label,
+.powermail_fieldwrap_offer_type .powermail_radio:not(:checked)+label {
+    background-color: var(--dark-light);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-tools:checked+label,
+.powermail_fieldwrap_offer_type .powermail_radio:checked+label {
+    background-color: transparent;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.checkbox-tools:not(:checked)+label:hover,
+.powermail_fieldwrap_offer_type .powermail_radio:not(:checked)+label:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.checkbox-tools:checked+label::before,
+.checkbox-tools:not(:checked)+label::before,
+.powermail_fieldwrap_offer_type .powermail_radio:checked+label::before,
+.powermail_fieldwrap_offer_type .powermail_radio:not(:checked)+label::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-image: linear-gradient(298deg, var(--red), var(--yellow));
+    z-index: -1;
+}
+
+.checkbox-tools:checked+label .uil,
+.checkbox-tools:not(:checked)+label .uil,
+.powermail_fieldwrap_offer_type .powermail_radio:checked+label .fas,
+.powermail_fieldwrap_offer_type .powermail_radio:not(:checked)+label .fas,
+.powermail_fieldwrap_offer_type [class^="icon-"] {
+    display: block;
+    padding-bottom: 1rem;
+}
+
+.powermail_fieldwrap_offer_type [class^="icon-"] {
+    font-size: 5rem;
+    line-height: 24px;
+}
+
+.checkbox-tools:not(:checked)+label,
+.powermail_fieldwrap_offer_type .powermail_radio:not(:checked)+label {
+    background-color: var(--light);
+    color: $primary;
+    box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.udzial-yes {
+    border: 1px solid #eee;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.udzial-no {
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: 1rem 0 1rem 1rem;
+}
+
+.powermail_fieldset_457,
+#powermail_fieldwrap_powiedznamdlaczego {
+    display: none;
+}
+
+#powermail_fieldwrap_offer_type {
+    /* border: solid 1px #ccc; */
+    /* border-radius: 6px; */
+    /* padding: 20px 10px; */
+}
+#c42392 > header { display: none; }
+#powermail_fieldwrap_wybierzrodzajoferty_intro {
+    z-index: 1;
+    h2 {
+        color: $primary;
+
+    }
+}
+.powermail_confirmation > h1 {
+    display: none;
+}
+#powermail_fieldwrap_wybierzrodzajoferty_intro {
+    margin-top:  3.5rem; margin-bottom: -5.5rem
+}
+#powermail_fieldwrap_wybierzrodzajoferty_intro h2 {
+    font-size: 4rem;
+}
+#powermail_fieldwrap_offer_type .powermail_field {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    .radio {
+        display: flex;
+        flex: auto;
+        padding: 0;
+        @extend .col-4;
+        &:nth-of-type(1) {
+            padding-right: 15px;
+        }
+
+        &:nth-of-type(2) {
+            padding-left: 15px;
+        }
+        label {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            &.form-check-label i {
+               font-size: 3rem;
+               margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+#powermail_fieldwrap_offer_type {
+    @extend .ratio;
+    @extend .ratio-21x9;
+    .powermail_field {
+        // height: auto;
+    }
+}

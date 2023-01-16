@@ -1,0 +1,226 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<fieldset id="powermail_fieldset_{page.uid}" class="powermail_fieldset powermail_fieldset_{page.uid} {page.css}">
+	<legend class="powermail_legend">{page.title}</legend>
+	<div class="row">
+		<f:comment><!--
+		<code class="small">
+			txLazarskiAkademiaEuropejskaPowermailVerticalLabel => protected'0' (1 chars)<br>
+			txLazarskiAkademiaEuropejskaPowermailLabelToLeft => protected'0' (1 chars)<br>
+			txLazarskiAkademiaEuropejskaPowermailResetRow => protected'0' (1 chars)<br>
+			title => protected'Stanowisko:' (11 chars)<br>
+			type => protected'input' (5 chars)<br>
+			settings => protected'' (0 chars)<br>
+			path => protected'' (0 chars)<br>
+			contentElement => protected0 (integer)<br>
+			text => protected'' (0 chars)<br>
+			prefillValue => protected'' (0 chars)<br>
+			placeholder => protected'' (0 chars)<br>
+			createFromTyposcript => protected'' (0 chars)<br>
+			validation => protected0 (integer)<br>
+			validationConfiguration => protected'' (0 chars)<br>
+			css => protected'disabled_text_only' (18 chars)<br>
+			description => protected'' (0 chars)<br>
+			multiselect => protectedFALSE<br>
+			datepickerSettings => protected'' (0 chars)<br>
+			feuserValue => protected'' (0 chars)<br>
+			senderName => protectedFALSE<br>
+			senderEmail => protectedFALSE<br>
+			mandatory => protectedFALSE<br>
+			marker => protected'offer_position' (14 chars)<br>
+			sorting => protected1 (integer)<br>
+			l10nParent => protected0 (integer)<br>
+			uid => protected6344 (integer)<br>
+			_localizedUid => protected6344 (integer)modified<br>
+			_languageUid => protected0 (integer)modified<br>
+			_versionedUid => protected6344 (integer)modified<br>
+			pid => protected10867 (integer)<br>
+			<br>
+		</code>
+		--></f:comment>
+		<f:for each="{page.fields}" as="field" iteration="iteration">
+			<f:comment><!--
+			{field.marker},
+			</code>
+			--></f:comment>
+			<v:variable.set name="variable_{field.marker}" value="{field}" />
+		</f:for>
+
+
+<!-- offer_position -->
+		<p class="mb-0">{variable_offer_position.title}</p>
+		<h3><f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_position.type)}" arguments="{field:variable_offer_position, form:form}" /></h3>
+
+<!-- offer_company -->
+		<p class="mb-0">{variable_offer_company.title}</p>
+		<h3><f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_company.type)}" arguments="{field:variable_offer_company, form:form}" /></h3>
+		<div class="d-none">
+		<f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_company.type)}" arguments="{field:variable_offer_company, form:form}" />
+		</div>
+
+
+<!-- offer_id -->
+		<f:if condition="{variable_offer_id.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_id.type)}" arguments="{field:variable_offer_id, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- student_name -->
+		<f:if condition="{variable_student_name.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_student_name.type)}" arguments="{field:variable_student_name, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- student_surname -->
+		<f:if condition="{variable_student_surname.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_student_surname.type)}" arguments="{field:variable_student_surname, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- student_email -->
+		<f:if condition="{variable_student_email.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_student_email.type)}" arguments="{field:variable_student_email, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- student_number -->
+		<f:if condition="{variable_student_number.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_student_number.type)}" arguments="{field:variable_student_number, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- files_intro -->
+		<f:if condition="{variable_files_intro.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_files_intro.type)}" arguments="{field:variable_files_intro, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- student_cv -->
+		<f:if condition="{variable_student_cv.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_student_cv.type)}" arguments="{field:variable_student_cv, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- student_letter -->
+		<f:if condition="{variable_student_letter.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_student_letter.type)}" arguments="{field:variable_student_letter, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- student_aplication -->
+		<f:if condition="{variable_student_aplication.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_student_aplication.type)}" arguments="{field:variable_student_aplication, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- offer_id_internal -->
+		<f:if condition="{variable_offer_id_internal.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_id_internal.type)}" arguments="{field:variable_offer_id_internal, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- offer_by_www -->
+		<f:if condition="{variable_offer_by_www.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_by_www.type)}" arguments="{field:variable_offer_by_www, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- offer_email -->
+		<f:if condition="{variable_offer_email.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_email.type)}" arguments="{field:variable_offer_email, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- offer_www -->
+		<f:if condition="{variable_offer_www.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_offer_www.type)}" arguments="{field:variable_offer_www, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- personal_data_dsc -->
+		<f:if condition="{variable_personal_data_dsc.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_personal_data_dsc.type)}" arguments="{field:variable_personal_data_dsc, form:form}" />
+		</vh:misc.createRowTags>
+
+<!-- send -->
+		<f:if condition="{variable_send.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+			<div class="w-100"></div>
+		</f:if>
+		<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+			<f:render partial="Form/Field/{vh:String.Upper(string:variable_send.type)}" arguments="{field:variable_send, form:form}" />
+		</vh:misc.createRowTags>
+
+		<f:comment><!--
+			<f:for each="{page.fields}" as="field" iteration="iteration">
+				<f:if condition="{field.txLazarskiAkademiaEuropejskaPowermailResetRow}">
+					<div class="w-100"></div>
+				</f:if>
+				<vh:misc.createRowTags columns="{settings.styles.numberOfColumns}" class="{settings.styles.framework.rowClasses}" iteration="{iteration}">
+					<f:render partial="Form/Field/{vh:String.Upper(string:field.type)}" arguments="{field:field, form:form}" />
+				</vh:misc.createRowTags>
+			</f:for>
+		--></f:comment>
+	</div>
+</fieldset>
+<script type="text/javascript">
+    var student_cv_wrap = document.getElementById('powermail_fieldwrap_student_cv');
+    var student_letter_wrap = document.getElementById('powermail_fieldwrap_student_letter');
+    var files_intro_wrap = document.getElementById('powermail_fieldwrap_files_intro');
+    var offer_by_www_field = document.getElementById('powermail_field_offer_by_www');
+    	// offer_practice_wrap.classList.add('d-none');
+
+	var offer_by_www = offer_by_www_field.value;
+
+	if (offer_by_www == 1) {
+		files_intro_wrap.classList.add('d-none');
+
+		student_cv_wrap.classList.add('d-none');
+		student_cv_wrap.classList.remove('mandatory');
+		student_cv_wrap.querySelector('input').required = false;
+
+		student_letter_wrap.classList.add('d-none');
+		student_letter_wrap.classList.remove('mandatory');
+		student_letter_wrap.querySelector('input').required = false;
+	} else {
+		files_intro_wrap.classList.remove('d-none');
+		
+		student_cv_wrap.classList.remove('d-none');
+		student_cv_wrap.classList.add('mandatory');
+		student_cv_wrap.querySelector('input').required = true;
+
+		student_letter_wrap.classList.remove('d-none');
+		student_letter_wrap.classList.add('mandatory');
+		student_letter_wrap.querySelector('input').required = true;
+		
+	}
+</script>

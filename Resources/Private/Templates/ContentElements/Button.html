@@ -1,0 +1,15 @@
+<f:layout name="Default"/>
+<f:section name="Header"></f:section>
+<f:section name="Main">
+    <div class="text-{data.icon_position} {f:if(condition: '{data.button_ajax} == 1', then: 'popup-ajax')}">
+        <f:link.typolink  parameter="{data.button_link}" 
+                          class="
+                               btn
+                               {f:if(condition: '{data.button_size} == 1', then: 'btn-sm')}{f:if(condition: '{data.button_size} == 2', then: 'btn-lg')}
+                               btn-{data.button_type}
+                          ">
+            <span class="glyphicon glyphicon-{data.icon}"><f:format.raw>{data.bodytext}</f:format.raw></span>
+        </f:link.typolink>
+    </div>
+
+</f:section>

@@ -1,0 +1,33 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<v:variable.set name="lang" value="{v:page.language( languages: {0:'pl', 3:'en'} )}" />
+<!--
+	=====================
+		Partials/Header.html
+-->
+<v:page.rootline as="rootline">
+	<f:for each="{rootline}" as="rootlinePage" iteration="iterator">
+		<f:if condition="{iterator.isLast}">
+			<v:variable.set name="rootpageUid" value="{rootlinePage.uid}" />
+		</f:if>				
+	</f:for>
+</v:page.rootline>
+
+
+{rootpageUid}
+<header class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="header-logo my-5">
+					<a href="/" title="{pageHeaderTitle}" class="">
+						<img class="img-responsive" src="{f:uri.resource(path:'Images/logo.svg', extensionName:'lazarski_form')}" alt="logo">
+					</a>
+				</div>
+			</div>
+			<div class="col">
+				<v:page.languageMenu tagName="ul" tagNameChildren="li" defaultIsoFlag="pl" defaultLanguageLabel="Polski" hideNotTranslated="1" layout="flag,name" useCHash="1" flagImageType="svg" linkCurrent="0" classCurrent="current" />
+			</div>
+		</div>
+	</div>
+</header>

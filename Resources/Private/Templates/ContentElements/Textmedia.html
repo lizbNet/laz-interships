@@ -1,0 +1,66 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<html htmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:switch expression="{data.imageorient}">
+	<f:case value="0">
+		<div class="row {data.layout} {data.frame} mb-3">
+		    <div class="col-12">
+				<f:render partial="Media/Gallery" arguments="{_all}" />
+				<f:render partial="Header" arguments="{_all}" />
+				<f:format.html>{data.bodytext}</f:format.html>
+			</div>
+		</div>
+
+	</f:case>
+
+	<f:case value="16">
+		<div class="row {data.layout} {data.frame} mb-3">
+		    <div class="col-12">
+				<f:render partial="Header" arguments="{_all}" />
+				<f:format.html>{data.bodytext}</f:format.html>
+				<f:render partial="Media/Gallery" arguments="{_all}" />
+			</div>
+		</div>
+	</f:case>
+
+	<f:case value="25">
+	    <div class="row align-items-center {data.layout} {data.frame}">
+			<div class="col-12">
+			</div>
+	        <div class="col-3 col-md-2 p-4 text-center">
+	            <f:render partial="Media/Gallery" arguments="{_all}" />
+	        </div>
+	        <div class="col-9 col-md-8">
+				<f:render partial="Header" arguments="{_all}" />
+	            <f:format.html>{data.bodytext}</f:format.html>
+	        </div>
+	    </div>
+	</f:case>
+
+	<f:case value="26">
+	    <div class="row align-items-center {data.layout} {data.frame} mb-3">
+			<div class="col-12">
+			</div>
+	        <div class="col-12 col-md-8">
+				<f:render partial="Header" arguments="{_all}" />
+	            <f:format.html>{data.bodytext}</f:format.html>
+	        </div>
+	        <div class="col-12 col-md-4 p-md-4 text-md-center">
+	            <f:render partial="Media/Gallery" arguments="{_all}" />
+	        </div>
+	    </div>
+	</f:case>
+	
+	<f:case default="true">
+		<div class="row {data.layout} {data.frame} mb-3">
+		    <div class="col-12">
+				<f:render partial="Header" arguments="{_all}" />
+				<f:format.html>{data.bodytext}</f:format.html>
+				<f:render partial="Media/Gallery" arguments="{_all}" />
+			</div>
+			<f:render partial="Footer" arguments="{_all}" />
+		</div>
+	</f:case>
+
+</f:switch>
+</html>

@@ -1,0 +1,82 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Page" />
+<f:section name="Main">
+    <v:page.rootline as="rootline">
+        <f:for each="{rootline}" as="rootlinePage" iteration="iterator">
+            <f:if condition="{iterator.isLast}">
+                <v:variable.set name="rootpageUid" value="{rootlinePage.uid}" />
+            </f:if>
+        </f:for>
+    </v:page.rootline>
+    {v:page.resources.fal(table:'pages', field:'media', uid:data.uid, slide:1) -> v:variable.set(name:'headerImage')}
+    <f:for each="{headerImage}" as="contentOfVariable" iteration="i">
+        <v:variable.set name="total" value="{i.total}" />
+    </f:for>
+    <header class="container-fluid">
+        <div class="row py-3">
+            <div class="container bg-white">
+                <div class="row">
+                    <div class="col-auto">
+                        <img src="/typo3conf/ext/lazarski_interships/Resources/Public/Images/lazarski_logo_pl.png" style="width:80px" />
+                    </div>
+                    <div class="col align-items-center d-flex"><h4 class="text-muted fw-light mb-0">Portal praktyk</h4></div>
+                    <div class="col align-items-center d-flex">
+                        <v:page.languageMenu id="language-menu" class="ml-auto text-right mb-0" tagName="ul" tagNameChildren="li" defaultIsoFlag="pl" defaultLanguageLabel="Polski" hideNotTranslated="1" layout="flag" useCHash="1" flagImageType="svg" linkCurrent="0" classCurrent="current" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="position-absolute vw-100" style="z-index:0;margin-left: -15px;margin-right: -15px;">
+        <div id="hero-bg" class="position-absolute top-0 bottom-0 start-0 end-0" style="z-index:0"></div>
+        <div class="container py-5 position-relative" style="z-index:1">
+            <div class="row">
+                <div class="col-6">
+                    <div class="ratio ratio-21x9"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container content-main">
+        <div class="row">
+            <div class="col content mb-5">
+                <v:content.render column="0" pageUid="{data.uid}" />
+            </div>
+        </div>
+    </section>
+    <f:comment>
+        <!--
+				<div class="col">
+					<p class="small text-muted">Uprzejmie informujemy, że posiadają Państwo prawo dostępu do swoich danych włącznie z możliwością ich poprawiania. Mogą Państwo cofnąć swoją zgodę. Mają Państwo również prawo wystąpić z pisemnym żądaniem zaprzestania przetwarzania tych danych. <br>Podanie danych osobowych jest dobrowolne jednak bez ich podania nie można dokonać rejestracji</p>
+					<hr>
+				</div>
+			-->
+    </f:comment>
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" id="information">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Uczelnia Łazarskiego informuje</h5>
+      </div>
+      <div class="modal-body">
+<p>Przetwarzanie danych osobowych osób wykorzystujących portal kariara.lazarski.pl w procesie rekrutacji.</p>
+        <ol><li><small>Administratorem Twoich danych osobowych jest Uczelnia Łazarskiego z siedzibą w Warszawie przy ul. Świeradowskiej 43, 02-662 Warszawa.</small></li>
+            <li><small>Administrator powołał Inspektora Ochrony Danych, z którym można się skontaktować pod adresem - <a href="mailto:iod@lazarski.edu.pl">iod@lazarski.edu.pl</a>.</small></li>
+            <li><small>Twoje dane osobowe będą przetwarzane w celu obsłużenia rejestracji na praktyki i rejestracji przebiegu praktyk na podstawie art. 6 ust. 1 lit. b - realizacja oraz podejmowanie działań w celu wykonania umowy oraz art. 6 ust. 1 lit. f RODO, uzasadnionego interesu jakim jest potwierdzenie realizacji praktyk studenckich.</small></li>
+            <li><small>Twoje dane osobowe będą przechowywane przez Administratora przez okres niezbędny do przeprowadzenia procesu rekrutacji oraz zrealizowania działań wymaganych do potwierdzenia zrealizowania praktyk studenckich.</small></li>
+            <li><small>Odbiorcami moich danych osobowych będą podmioty uprawnione do uzyskania danych osobowych na podstawie przepisów prawa. Dane osobowe mogą zostać przekazane przez nas podmiotom, które obsługują systemy teleinformatyczne Administratora oraz udostępniające narzędzia teleinformatyczne lub świadczące dla Administratora usługi chmurowe, pocztowe czy hostingu.</small></li>
+            <li><small>Twoje dane osobowe nie będą poddawane zautomatyzowanym decyzjom, w tym profilowaniu. </small></li>
+            <li><small>Posiadasz prawo do żądania od Administratora dostępu do danych osobowych, prawo do ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do przenoszenia danych.</small></li>
+            <li><small>Masz prawo wniesienia skargi do organu nadzorczego – Prezesa Urzędu Ochrony Danych Osobowych.</small></li>
+            <li><small>Posiadasz prawo wniesienia, w dowolnym momencie, sprzeciwu - z przyczyn związanych z Twoją szczególną sytuacją - wobec przetwarzania danych osobowych, opartego na podstawie art. 6 ust. 1 lit. f RODO.</small></li>
+            <li><small>Podanie danych osobowych jest dobrowolne, jednak konieczne do realizacji celów, do jakich zostały zebrane. Niepodanie danych będzie skutkować brakiem możliwości zgłoszenia udziału w praktykach za pomocą platformy kariera.lazarski.pl.</small></li>
+            <li><small>Twoje dane osobowe nie będą przekazywane do państwa trzeciego/ organizacji międzynarodowej, o ile nie będą tego wymagały prawne obowiązki Administratora.</small></li></ol>
+      </div>
+<div class="modal-footer">
+        <button id="information-agreement" type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Potwierdzam przyjęcie do wiadomości powyższych informacji</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <f:render partial="Footer" arguments="{_all}" />
+</f:section>

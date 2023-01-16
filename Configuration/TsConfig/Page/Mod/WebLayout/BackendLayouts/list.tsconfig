@@ -1,0 +1,29 @@
+################################
+#### BACKENDLAYOUT: List ####
+################################
+mod {
+    web_layout {
+        BackendLayouts {
+            list {
+                title = List
+                config {
+                    backend_layout {
+                        colCount = 1
+                        rowCount = 1
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:backend_layout.column.normal
+                                        colPos = 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                icon = EXT:bootstrap_package/Resources/Public/Images/BackendLayouts/default_clean.gif
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+     <f:switch expression="{v:content.info(contentUid:'{data.tx_gridelements_container}', field:'layout')}">
+          <f:case default="true">
+               <f:image src="{file.uid}" maxHeight="500" treatIdAsReference="1" title="{file.title}" alt="{file.alternative}"
+                    class="img-fluid" />
+          </f:case>
+     </f:switch>
+
+</html>

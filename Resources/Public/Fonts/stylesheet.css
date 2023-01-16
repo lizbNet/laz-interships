@@ -1,0 +1,81 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2017 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      Fontfabric
+ * License URL: https://www.fontspring.com/licenses/fontfabric/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family:'Nexa Slab Bold FREE';
+    src: url('NexaSlabBoldFREE.eot');
+	src: url('NexaSlabBoldFREE.eot?#iefix') format('embedded-opentype'),
+		url('NexaSlabBoldFREE.woff2') format('woff2'),
+		url('NexaSlabBoldFREE.woff') format('woff'),
+		url('NexaSlabBoldFREE.ttf') format('truetype'),
+		url('NexaSlabBoldFREE.otf') format('opentype'),
+		url('NexaSlabBoldFREE.svg#NexaSlabBoldFREE') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-FB02;
+}
+@font-face {
+    font-family:'Nexa Slab Regular FREE';
+    src: url('NexaSlabRegularFREE.eot');
+	src: url('NexaSlabRegularFREE.eot?#iefix') format('embedded-opentype'),
+		url('NexaSlabRegularFREE.woff2') format('woff2'),
+		url('NexaSlabRegularFREE.woff') format('woff'),
+		url('NexaSlabRegularFREE.svg#NexaSlabRegularFREE') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-0237;
+}
+
+
+@font-face {
+    font-family:'Century Gothic';
+    src: url('Century Gothic Bold.eot');
+	src: url('Century Gothic Bold.eot?#iefix') format('embedded-opentype'),
+		/*url('Century Gothic Bold.woff2') format('woff2'),*/
+		url('Century Gothic Bold.woff') format('woff'),
+		url('Century Gothic Bold.ttf') format('truetype'),
+		url('Century Gothic Bold.otf') format('opentype'),
+		url('Century Gothic Bold.svg#Century Gothic Bold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-F005;
+}
+
+@font-face {
+    font-family:'Century Gothic';
+    src: url('Century Gothic.eot');
+	src: url('Century Gothic.eot?#iefix') format('embedded-opentype'),
+		/*url('Century Gothic.woff2') format('woff2'),*/
+		url('Century Gothic.woff') format('woff'),
+		url('Century Gothic.ttf') format('truetype'),
+		url('Century Gothic.otf') format('opentype'),
+		url('Century Gothic.svg#Century Gothic') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-F005;
+}

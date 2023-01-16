@@ -1,0 +1,27 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Page" />
+<f:debug title="title">{_all}</f:debug>	
+	<f:section name="Main">
+	<f:render partial="MenuTop" arguments="{_all}" />
+
+	<div id="fullpage">
+	    <div class="section">
+	        <div class="slide">
+				<v:content.render column="33" />
+	        </div>
+		</div>
+	</div>
+    <div class="slide mt-5">
+		<section class="container">
+			<div class="row">
+				<div class="col">
+					<v:content.render column="0" />
+				</div>
+			</div>
+		</section>
+    </div>
+
+	<f:render partial="Footer" arguments="{_all}" />
+
+</f:section>

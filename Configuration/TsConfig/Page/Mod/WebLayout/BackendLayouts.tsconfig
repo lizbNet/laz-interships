@@ -1,0 +1,8 @@
+#################################
+#### BOOTSTRAP_PACKAGE RESET ####
+#################################
+
+########################
+#### BACKENDLAYOUTS ####
+########################
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:lazarski_interships/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts" extensions="tsconfig">

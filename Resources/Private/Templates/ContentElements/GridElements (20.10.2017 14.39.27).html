@@ -1,0 +1,296 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="GridElements" />
+<f:section name="Main">
+
+	<v:variable.set name="col1Class" value="{data.flexform_mdCol1} {data.flexform_smCol1} {data.flexform_xsCol1} {data.flexform_lgCol1} {data.flexform_col21class}" />
+	<v:variable.set name="col2Class" value="{data.flexform_mdCol2} {data.flexform_smCol2} {data.flexform_xsCol2} {data.flexform_lgCol2} {data.flexform_col22class}" />
+	<f:comment>
+	<!--
+	<f:switch expression="{data.tx_gridelements_backend_layout}">
+		<f:case value="Section">
+			<f:if condition="{data.layout} == 62"></f:if>
+			{data.tx_gridelements_backend_layout}
+			<f:render section="Timeline" arguments="{_all}" />
+		</f:case>
+		<f:case value="Contact">
+			<f:render section="Contact" arguments="{_all}" />
+			{data.tx_gridelements_backend_layout}
+		</f:case>
+		<f:case default="true">
+			{data.tx_gridelements_backend_layout}
+		</f:case>
+	</f:switch>
+	-->
+	</f:comment>
+	
+	<f:switch expression="{data.layout}">
+		<f:case value="lazarski_sielska_dolina_timeline">
+			<f:if condition="{data.layout} == 62"></f:if>
+			<f:render section="Timeline" arguments="{_all}" />
+		</f:case>
+		<f:case value="lazarski_klub_absolwenta_featurette">
+			<f:render section="Featurette" arguments="{_all}" />
+		</f:case>
+		<f:case value="lazarski_klub_absolwenta_partners_list">
+			<f:render section="PartnerList" arguments="{_all}" />
+		</f:case>
+		<f:case value="lazarski_klub_absolwenta_partners_card">
+			<f:render section="PartnerCard" arguments="{_all}" />
+		</f:case>
+		<f:case value="lazarski_klub_absolwenta_slider">
+			<f:render section="Slider" arguments="{_all}" />
+		</f:case>
+		<f:case default="true">
+			<f:render section="Default" arguments="{_all}" />
+		</f:case>
+	</f:switch>
+</f:section>
+
+
+<f:section name="Slider">
+    <!-- Slider -->
+    <section id="slider{data.uid}" class="my-5 py-1 px-0 {data.bootstrap_container_wrap}">
+	    <div class="row slider">
+            <f:for each="{data.tx_gridelements_view_raw_columns.111}" as="item" iteration="iteration">
+		    	<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+			</f:for>
+		</div>
+    </section>
+</f:section>
+
+
+<f:section name="About">
+    <!-- About -->
+    <section id="about" class="about {data.bootstrap_container_wrap}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+					<f:render partial="Header/AllSection" arguments="{_all}" />
+                </div>
+            </div>
+			<div class="row text-center">
+	            <f:for each="{data.tx_gridelements_view_raw_columns.111}" as="item" iteration="iteration">
+			    	<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+				</f:for>
+            </div>
+        </div>
+    </section>
+</f:section>
+
+
+<f:section name="Featurette">
+    <!-- Contact -->
+    <section id="marketing" class="{data.bootstrap_container_wrap}">
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+					<f:render partial="Header/AllSection" arguments="{_all}" />
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-stretch">
+				<f:for each="{data.tx_gridelements_view_raw_columns.111}" as="item" iteration="iteration">
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+				</f:for>
+				<div class="clearfix"></div>
+            </div>
+        </div>
+    </section>
+</f:section>
+
+
+<f:section name="PartnerList">
+    <!-- Contact -->
+    <section id="partner-list" class="{data.bootstrap_container_wrap}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+					<f:render partial="Header/AllSection" arguments="{_all}" />
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+				<f:for each="{data.tx_gridelements_view_raw_columns.111}" as="item" iteration="iteration">
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+				</f:for>
+				<div class="clearfix"></div>
+            </div>
+        </div>
+    </section>
+</f:section>
+
+
+<f:section name="PartnerCard">
+    <!-- Contact -->
+    <section id="partner-card" class="partner-card {data.bootstrap_container_wrap}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+					<f:render partial="Header/AllSection" arguments="{_all}" />
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-stretch">
+				<f:for each="{data.tx_gridelements_view_raw_columns.111}" as="item" iteration="iteration">
+					<v:variable.register.set name="contentElement{item.uid}.isOdd" value="{iteration.isOdd}" />
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+				</f:for>
+            </div>
+        </div>
+    </section>
+</f:section>
+
+
+<f:section name="Contact">
+    <!-- Contact -->
+    <section id="kontakt" class="contact {data.bootstrap_container_wrap}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+					<f:render partial="Header/AllSection" arguments="{_all}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+					<div class="row">
+					    <div class="col-12 col-md-4">
+					        <div class="card background-white">
+								<div class="card-block">
+									<p class="card-text">
+										<f:for each="{data.tx_gridelements_view_raw_columns.111}" as="item" iteration="iteration">
+											<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+										</f:for>
+									</p>
+								</div>
+							</div>
+					    </div>
+					    <div class="clearfix"></div>
+		            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</f:section>
+
+<f:section name="Default">
+    <!-- Portfolio Grid -->
+    <section id="c{data.uid}">
+        <div class="{data.bootstrap_container_wrap}">
+            <f:if condition="{data.header}">
+	            <div class="row">
+	                <div class="col text-center">
+	                    <f:render partial="Header/AllSection" arguments="{_all}" />
+	                </div>
+	            </div>
+            	
+            </f:if>
+            <f:switch expression="{data.tx_gridelements_backend_layout}">
+            	<f:case value="2cols">
+
+		            <div class="row {data.bootstrap_container_extra_class}">
+		                <div class="col {col1Class}">
+							<f:for each="{data.tx_gridelements_view_raw_columns.101}" as="item" iteration="iteration">
+								<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+							</f:for>
+		                </div>
+		                <div class="col {col2Class}">
+							<f:for each="{data.tx_gridelements_view_raw_columns.102}" as="item" iteration="iteration">
+								<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+							</f:for>	                
+		                </div>
+		            </div>
+            	</f:case>
+
+            	<f:case default="true">
+		            <div class="row">
+		                <div class="col">
+							<f:for each="{data.tx_gridelements_view_raw_columns.111}" as="item" iteration="iteration">
+								<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+					<f:if condition="{item._LOCALIZED_UID}">
+						<f:then>
+							<v:content.render contentUids="{0: item._LOCALIZED_UID}" />
+						</f:then>
+						<f:then>
+							<v:content.render contentUids="{0: item.uid}" />
+						</f:then>
+					</f:if>
+					<f:comment><!-- HACK VHS language v:languageMenu + v:content.render --></f:comment>
+							</f:for>	                
+		                </div>
+		            </div>
+            	</f:case>
+
+            </f:switch>
+        </div>
+    </section>
+</f:section>

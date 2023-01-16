@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="lazarski" date="2015-07-14T14:07:35+02:00">
+		<header/>
+		<body>
+			<trans-unit id="flux.fluidcontent">
+				<source>Fluid content element example</source>
+			</trans-unit>
+			<trans-unit id="flux.fluidcontent.description">
+				<source>Description can be entered in LLL file locallang.xlf of extension lazarski</source>
+			</trans-unit>
+			<trans-unit id="flux.fluidpage">
+				<source>Standard fluid page</source>
+			</trans-unit>
+			<trans-unit id="flux.fluidpage.description">
+				<source>Description can be entered in LLL file locallang.xlf of extension lazarski</source>
+			</trans-unit>
+			<trans-unit id="form.required_indicator">
+				<source>*required fields</source>
+				<target state="translated">*pola obowiazkowe</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

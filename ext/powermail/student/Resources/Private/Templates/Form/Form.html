@@ -1,0 +1,73 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:layout name="Default" />
+
+Render Powermail Form
+{form} 			All Forms with their Pages and their Fields
+{ttContentData}		All values from content element with plugin
+
+<f:section name="main">
+	<f:comment>
+		<f:debug>{_all}</f:debug>
+	</f:comment>
+	<style type="text/css">
+		#hero-bg:before {
+		    background-image: url(/typo3conf/ext/lazarski_interships/Resources/Public/Images/bg02g.jpg);
+		}
+	</style>
+    <div class="position-relative" style="z-index:0;margin-left: -15px;margin-right: -15px;">
+        <div class="container py-5 position-relative" style="z-index:1">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="ratio ratio-21x9">
+                        <div class="d-flex align-items-center">
+                            <h2 class="text-center text-primary fw-bolder"></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card mt-n5">
+        	<div class="card-header pt-4 px-4 pb-3">
+        	</div>
+		    <div class="card-body pt-4 px-5 pb-5">
+		    	<div class="row g-4">
+		    		<div class="col-12">
+						<f:if condition="{form}">
+							<f:then>
+								<f:form
+									action="{action}"
+									section="c{ttContentData.uid}"
+									name="field"
+									enctype="multipart/form-data"
+									additionalAttributes="{vh:Validation.EnableParsleyAndAjax(form:form)}"
+									addQueryString="{settings.misc.addQueryString}"
+									class="powermail_form powermail_form_{form.uid} {form.css} {settings.styles.framework.formClasses} {vh:Misc.MorestepClass(activate:settings.main.moresteps)}">
+
+									<h3 class="d-none">{form.title}</h3>
+									<f:render partial="Misc/FormError" arguments="{_all}" />
+
+									<f:for each="{form.pages}" as="page">
+										<f:render partial="Form/Page" arguments="{_all}" />
+									</f:for>
+
+									<f:form.hidden name="mail[form]" value="{form.uid}" class="powermail_form_uid" />
+									<f:render partial="Misc/HoneyPod" arguments="{form:form}" />
+								</f:form>
+								<p>{f:translate(key:"LLL:EXT:lazarski_form/Resources/Private/Language/locallang.xlf:form.required_indicator")}</p>
+								<f:comment>
+								</f:comment>
+
+							</f:then>
+							<f:else>
+								<f:translate key="error_no_form" />
+							</f:else>
+						</f:if>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</f:section>

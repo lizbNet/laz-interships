@@ -1,0 +1,45 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<v:variable.set name="lang" value="{v:page.language( languages: {0:'pl', 3:'en'} )}" />
+
+<!--
+	=====================
+		Partials/MenuTop.html
+-->
+<v:page.rootline as="rootline">
+	<f:for each="{rootline}" as="rootlinePage" iteration="iterator">
+		<f:if condition="{iterator.isLast}">
+			<v:variable.set name="rootpageUid" value="{rootlinePage.uid}" />
+		</f:if>				
+	</f:for>
+</v:page.rootline>
+
+<div class="menu">
+    <ul class="nav flex-column">
+		<v:menu as="menu" lang="EN" includeSpacers="1">
+		<f:for each="{menu}" as="menuElement" key="menuKey" >
+			<li class="nav-item">
+				
+				<f:if condition="{menuElement.doktype} == '199'">
+					<f:then>
+						<hr>
+					</f:then>
+					<f:else>
+						<f:link.page pageUid="{menuElement.uid}" class="nav-link {menuElement.class}{f:if(condition:menuElement.current, then:' active font-weight-bold')}">{menuElement.title}</f:link.page>
+							<f:if condition="{menuElement.hasSubPages}">
+							    <ul class="nav pl-4">
+									<v:menu pageUid="{menuElement.uid}" as="subMenu">
+									<f:for each="{subMenu}" as="subMenuElement">
+										<li class="nav-item">
+											<f:link.page pageUid="{subMenuElement.uid}" class="nav-link {subMenuElement.class}{f:if(condition:subMenuElement.current, then:' active font-weight-bold')}">{subMenuElement.title}</f:link.page>
+										</li>
+									</f:for>
+									</v:menu>
+								</ul>
+							</f:if>
+					</f:else>
+				</f:if>
+			</li>
+		</f:for>
+		</v:menu>
+    </ul>
+</div>

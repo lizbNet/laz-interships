@@ -1,0 +1,40 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Page" />
+<f:section name="Main">
+	<v:page.rootline as="rootline">
+		<f:for each="{rootline}" as="rootlinePage" iteration="iterator">
+			<f:if condition="{iterator.isLast}">
+				<v:variable.set name="rootpageUid" value="{rootlinePage.uid}" />
+			</f:if>				
+		</f:for>
+	</v:page.rootline>
+
+	<f:render partial="Header" />
+	<section class="container">
+		<div class="row">
+			<div class="col-9 content mt-5 mb-5">
+				<v:content.render column="0" pageUid="{data.uid}" />
+				<f:cObject typoscriptObjectPath="lib.newsHomeBig" />				
+			</div>
+			<div class="col-3 content mt-5 mb-5">
+				<f:render partial="MenuRight" />
+			</div>
+		</div>
+	</section>
+	<section class="container-fluid footer">
+		<div class="row">
+			<div class="col" style="background: #eee;">
+				<div class="container">
+					<div class="row">
+						<div class="col mt-5 mb-5">
+							<h5>prof. Uczelni Łazarskiego dr hab. Anna Hrycaj</h5>
+			    			<p>pokój 269 <br><a href="mailto:ipuir@lazarski.edu.pl">ipuir@lazarski.edu.pl</a></p>
+							<p>ul. Świeradowska 43, 02-662 Warszawa <br>NIP 527 02 09 936</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</f:section>

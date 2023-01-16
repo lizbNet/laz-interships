@@ -1,0 +1,341 @@
+# Default PAGE object:
+##############
+#### PAGE ####
+##############
+
+lib {
+  fluidContent {
+    templateRootPaths {
+      2 = EXT:lazarski_interships/Resources/Private/Templates/ContentElements/
+    }
+    partialRootPaths {
+      2 = EXT:lazarski_interships/Resources/Private/Partials/ContentElements/
+    }
+    layoutRootPaths {
+      2 = EXT:lazarski_interships/Resources/Private/Layouts/ContentElements/
+    }
+  }
+}
+
+plugin {
+  tx_powermail {
+    view {
+      templateRootPaths {
+        30 = EXT:lazarski_interships/ext/powermail/Resources/Private/Templates/
+      }
+      partialRootPaths {
+        30 = EXT:lazarski_interships/ext/powermail/Resources/Private/Partials/
+      }
+    }
+  }
+}
+
+page = PAGE
+page {
+  headerData.999 = TEXT
+  headerData.999.value =
+  
+  typeNum = 0
+  10 = FLUIDTEMPLATE
+  10 {
+    templateName >
+    templateName = TEXT
+    templateName {
+      stdWrap {
+        cObject = CASE
+        cObject {
+          key.data = levelfield:-1, backend_layout_next_level, slide
+          key.override.field = backend_layout
+          pagets__default_blank = TEXT
+          pagets__default_blank.value = Blank
+          pagets__list = TEXT
+          pagets__list.value = List
+          
+          default = TEXT
+          default.value = Default
+        }
+      }
+    }
+    layoutRootPaths.0   = EXT:lazarski_interships/Resources/Private/Layouts/Page/
+    partialRootPaths.0  = EXT:lazarski_interships/Resources/Private/Partials/Page/
+    templateRootPaths.0 = EXT:lazarski_interships/Resources/Private/Templates/Page/
+  }
+
+  jsFooterInline {
+    33 = TEXT
+    33.insertData = 1
+    33.value (
+    )
+    
+  }
+
+    meta {
+        viewport = width=device-width, initial-scale=1, shrink-to-fit=no
+        viewport {
+          attribute = name
+        }
+        # OpenGraph Tags
+        og:title {
+            attribute = property
+            field = title
+        }
+        og:site_name {
+            attribute = property
+            data = TSFE:tmpl|setup|sitetitle
+        }
+        og:description = {$page.meta.description}
+        og:description {
+            attribute = property
+            field = description
+        }
+        og:image {
+            attribute = property
+            stdWrap.cObject = FILES
+            stdWrap.cObject {
+                references {
+                    data = levelfield:-1, media, slide
+                }
+                maxItems = 1
+                renderObj = COA
+                renderObj {
+                    10 = IMG_RESOURCE
+                    10 {
+                        file {
+                            import.data = file:current:uid
+                            treatIdAsReference = 1
+                            width = 1280c
+                            height = 720c
+                        }
+                        stdWrap {
+                            typolink {
+                                parameter.data = TSFE:lastImgResourceInfo|3
+                                returnLast = url
+                                forceAbsoluteUrl = 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+plugin {
+  tx_bootstrap_package {
+    #By default the following settings only will have relevance if you have fluidcontent_core extension loaded
+    settings {
+      container {
+        types {
+          default = div
+          Example = div
+        }
+      }
+    }
+  }
+}
+
+    
+
+################
+#### CONFIG ####
+################
+config {
+  contentObjectExceptionHandler = 0
+  typolinkCheckRootline = 1
+  typolinkEnableLinksAcrossDomains = 1
+  
+  absRefPrefix = auto
+  no_cache = {$config.no_cache}
+  uniqueLinkVars = 1
+  pageTitleFirst = 1
+  prefixLocalAnchors = {$config.prefixLocalAnchors}
+  renderCharset = utf-8
+  metaCharset = utf-8
+  doctype = html5
+  removeDefaultJS = {$config.removeDefaultJS}
+  inlineStyle2TempFile = 1
+  admPanel = {$config.admPanel}
+  debug = 1
+  cache_period = 86400
+  sendCacheHeaders = {$config.sendCacheHeaders}
+  intTarget =
+  extTarget =
+  disablePrefixComment = 1
+  index_enable = 1
+  index_externals = 1
+  index_metatags = 1
+  headerComment = comment
+  
+  // Enable RealUrl
+  tx_realurl_enable = 1
+  simulateStaticDocuments = 0
+  
+  // Disable Image Upscaling
+  noScaleUp = 0
+  
+  // Compression and Concatenation of CSS and JS Files
+  compressJs = 0
+  compressCss = 0
+  concatenateJs = 0
+  concatenateCss = 0
+  noScaleUp = 1
+}
+
+
+config {
+  # Localization:
+  #linkVars = L
+  #sys_language_overlay = 0
+  sys_language_mode = strict
+  sys_language_overlay = hideNonTranslated
+  #sys_language_mode = ignore
+  #sys_language_mode = content_fallback; 0
+  sys_language_softMergeIfNotBlank = tt_content:image,tt_content:assets,page:media,page:media,sys_file_metadata:file,pages_language_overlay:media,tx_news:media
+  # allowed range - otherwise anything else could be inserted
+  linkVars = L(0|3)
+  #default configuration
+  sys_language_uid = 0
+  language = pl
+  locale_all = pl_PL.UTF-8
+  htmlTag_langKey = pl
+  htmlTag_setParams = lang="pl" dir="ltr" class="no-js"
+  defaultGetVars {
+    L = 0
+  }  
+}
+[siteLanguage("languageId") == 1]
+config {
+  sys_language_uid =
+  language =
+  locale_all =
+  htmlTag_setParams =
+}
+
+[siteLanguage("languageId") == 2]
+config {
+  sys_language_uid =
+  language =
+  locale_all =
+  htmlTag_setParams =
+}
+
+[siteLanguage("languageId") == 3]
+config {
+  sys_language_uid = 3
+  language = en
+  locale_all = en_GB.UTF-8
+  htmlTag_langKey = en
+  htmlTag_setParams = lang="en" dir="ltr" class="no-js"
+}
+
+[end]
+
+#############################
+#### GRIDELEMENTS: SETUP ####
+#############################
+lib.gridelements.defaultGridSetup {
+    columns {
+        default {
+            renderObj = COA
+            renderObj {
+                20 =< tt_content
+            }
+        }
+    }
+}
+
+#############################
+#### CTYPE: GRIDELEMENTS ####
+#############################
+plugin.tx_gridelements_pi1 >
+tt_content.gridelements_pi1 >
+tt_content.gridelements_pi1 = FLUIDTEMPLATE
+tt_content.gridelements_pi1 {
+
+    ################
+    ### TEMPLATE ###
+    ################
+    templateName = GridElements
+    templateRootPaths {
+        20 = EXT:lazarski_interships/Resources/Private/Templates/ContentElements/
+    }
+    partialRootPaths {
+        20 = EXT:lazarski_interships/Resources/Private/Partials/ContentElements/
+    }
+    layoutRootPaths {
+        20 = EXT:lazarski_interships/Resources/Private/Layouts/ContentElements/
+    }
+
+    #################
+    ### VARIABLES ###
+    #################
+    variables {
+        content = USER
+        content {
+            userFunc = GridElementsTeam\Gridelements\Plugin\Gridelements->main
+            setup {
+                default < lib.gridelements.defaultGridSetup
+            }
+        }
+    }
+}
+
+
+############################
+#### GRIDELEMENTS: VIEW ####
+############################
+tt_content.gridelements_view < tt_content.gridelements_pi1
+
+page {
+  includeCSS {
+    theme =
+    style                 = EXT:lazarski_interships/Resources/Public/Styles/scss/custom.scss
+    icons                 = https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css
+    icons.external        = 1
+    font                  = https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap
+    font.external         = 1
+  }
+  
+  includeJSLibs {
+  }
+  
+  includeJSFooterlibs {
+    bootstrap >
+  }
+  includeJSFooter {
+    jquery               = https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+    jquery.external      = 1
+    jquery.forceOnTop    = 1
+
+    popper               >
+    bootstrap            = https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js
+    bootstrap.external   = 1
+    webfontload          = https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js
+    webfontload.external = 1
+    main                 = EXT:lazarski_interships/Resources/Public/JavaScripts/main.js
+    
+    bootstrap_lightbox >
+    flexslider2 >
+    responsiveimages >
+    equalheight >
+    bootstrap_navbartoggle >
+    scroll >
+    gradientmaps >
+    gradientmaps_config >
+    
+  }
+/*
+# add jQuery if it was turned on in the constants
+[globalVar = LIT:0 < {$plugin.tx_powermail.settings.javascript.addAdditionalJavaScript}]
+page {
+  # Inlude JavaScript files
+  includeJSFooter {
+    powermailJQueryDatepicker = EXT:powermail/Resources/Public/JavaScripts/Libraries/jquery.datetimepicker.min.js
+    powermailJQueryFormValidation = EXT:powermail/Resources/Public/JavaScripts/Libraries/parsley.min.js
+    powermailJQueryTabs = EXT:powermail/Resources/Public/JavaScripts/Powermail/Tabs.min.js
+    powermailForm = EXT:powermail/Resources/Public/JavaScripts/Powermail/Form.min.js
+  }
+}
+[end]
+*/
+}

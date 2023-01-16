@@ -1,0 +1,169 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:layout name="Default" />
+Render Powermail_Frontend List View
+{mails} Mail Objects
+<f:section name="main">
+        <style type="text/css">
+            #hero-bg:before {
+                background-image: url(/typo3conf/ext/lazarski_interships/Resources/Public/Images/bg02g.jpg);
+            }
+        </style>    
+    <f:alias map="{flashMessageClass:'powermail_message_error'}">
+        <f:render partial="Misc/FlashMessages" arguments="{_all}" />
+    </f:alias>
+
+    <div class="powermail_frontend list">
+        <f:render partial="Output/Search" arguments="{_all}" />
+        <f:render partial="Output/Export" arguments="{_all}" />
+        <f:if condition="{mails}">
+            <f:then>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <f:for each="{mails}" as="mail" iteration="index">
+                        <div class="col d-none-" id="offer-{mail.uid}">
+                            <div class="card h-100">
+                                <f:comment><!--
+                                <f:if condition="{index.isFirst}">
+                                    <tr>
+                                        <th>
+                                            (<f:count subject="{mails}" />)
+                                        </th>
+                                        <f:for each="{fields}" as="field">
+                                            <th class="powermail_sorting">
+                                                {field.title}
+                                            </th>
+                                        </f:for>
+                                        <th></th>
+                                    </tr>
+                                </f:if>
+                                --></f:comment>
+
+                                <f:for each="{fields}" as="field">
+                                    <f:for each="{mail.answers}" as="answer">
+                                        <f:if condition="{answer.field} == {field}">
+                                            <v:variable.set name="variable_{field.marker}" value="{answer.value}" />
+                                        </f:if>
+                                    </f:for>
+                                </f:for>
+                                <div class="card-header">
+                                    <h4 class="mb-1">{variable_offer_position}</h4>
+                                </div>
+
+                                <div class="card-body">
+                                    <p class="d-none"><span title="{mail.uid}">{index.cycle}.</span></p>
+                                    <div class="row">
+                                        <div class="col-auto pe-0">
+                                            <h6><i class="bi bi-bookmark"></i></h6></div>
+                                        <div class="col">
+                                            <h6 class="mb-0">Nazwa firmy:</h6><p>{variable_company_name}</p>
+                                        </div>
+                                    </div>
+
+                                    <f:if condition="{variable_offer_type} == 'practice'">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-auto pe-0">
+                                                        <h6 class="mb-0"><i class="bi bi-bullseye"></i></h5>
+                                                    </div>
+                                                    <div class="col"><h6 class="mb-0">Rodzaj oferty:</h6>
+                                                        <p>Praktyki studenckie</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-auto pe-0">
+                                                        <h6 class="mb-0"><i class="bi bi-bullseye"></i></h6></div>
+                                                    <div class="col">
+                                                        <h6 class="mb-0">Rodzaj oferty:</h6>
+                                                        <f:switch expression="{variable_offer_practice}">
+                                                            <f:case value="free">
+                                                                <p>Bezpłatne</p>
+                                                            </f:case>
+                                                            <f:case value="payed">
+                                                                <p>Płatne</p>
+                                                            </f:case>
+                                                        </f:switch>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-auto pe-0">
+                                                        <h6 class="mb-0"><i class="bi bi-bullseye"></i></h6>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="mb-0">Długość trwania umowy:</h6>
+                                                        <p>{variable_offer_practice_length} godz.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </f:if>
+                                    <f:if condition="{variable_offer_type} == 'work'">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-auto pe-0">
+                                                        <h6 class="mb-0"><i class="bi bi-bullseye"></i></h6>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="mb-0">Rodzaj oferty:</h6>
+                                                        <p>Oferta pracy</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-auto pe-0">
+                                                        <h6 class="mb-0"><i class="bi bi-bullseye"></i></h6>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="mb-0">Rodzaj umowy:</h6>
+                                                        <f:switch expression="{variable_offer_work_type}">
+                                                            <f:case value="commission">
+                                                                <p>Umowa zlecenie</p>
+                                                            </f:case>
+                                                            <f:case value="work">
+                                                                <p>Umowa o pracę</p>
+                                                            </f:case>
+                                                        </f:switch>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-auto pe-0">
+                                                        <h6 class="mb-0"><i class="bi bi-bullseye"></i></h6>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="mb-0">Długość trwania umowy:</h6>
+                                                        <p>{variable_offer_practice_length} godz.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </f:if>
+
+                                </div>
+                                <div class="card-footer text-end pe-2">
+                                    <f:if condition="{settings.single.activateLink}">
+                                        <f:link.action action="show" pageUid="{singlePid}" arguments="{mail:mail}" class="btn btn-text text-primary">
+                                            <f:translate key="PowermailFrontendDetailView">Details</f:translate>
+                                        </f:link.action>
+                                    </f:if>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </f:for>
+                </div>
+            </f:then>
+            <f:else>
+                <p>
+                    <f:translate key="BackendListNoMails" /><br />
+                    <f:translate key="PowermailFrontendNoMailsDetail" />
+                </p>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>

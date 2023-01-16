@@ -1,0 +1,51 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<v:variable.set name="lang" value="{v:page.language( languages: {0:'pl', 3:'en'} )}" />
+<!--
+    =====================
+        Partials/Footer.html
+-->
+<footer class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class='container'>
+                <div class='row align-items-center py-3'>
+                    <f:comment>
+                        <div class='col-md-3 col-12'>
+                            <div class='left'>
+                                <ul>
+                                    <v:menu as="menu" lang="EN">
+                                        <f:for each="{menu}" as="menuElement" key="menuKey">
+                                            <li>
+                                                <f:if condition="{menuElement.current}">
+                                                    <f:then>
+                                                        <span class="{menuElement.class}">{menuElement.title}</span>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:link.page pageUid="{menuElement.uid}" class="{menuElement.class}">{menuElement.title}</f:link.page>
+                                                    </f:else>
+                                                </f:if>
+                                            </li>
+                                        </f:for>
+                                    </v:menu>
+                                </ul>
+                            </div>
+                        </div>
+                    </f:comment>
+                    <div class='col-lg-2 col-2'>
+                        <img class='img-fluid' src="{f:uri.resource(path:'Images/lazarski_logo_pl.png', extensionName:'lazarski_interships')}" alt='ikona'>
+                    </div>
+                    <div class='col'>
+                        <div class='right'>
+                            <ul class="list-unstyled">
+                                <li>Uczelnia Łazarskiego</li>
+                                <li>ul. Świeradowska 43 <br>02-662 Warszawa</li>
+                                <li class="d-none">e-mail: <a href="mailto:izwoz@lazarski.edu.pl">izwoz@lazarski.edu.pl</a></li>
+                                <li><a href="https://www.lazarski.pl">lazarski.pl</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

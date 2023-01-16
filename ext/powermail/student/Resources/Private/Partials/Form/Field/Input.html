@@ -1,0 +1,65 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+
+<f:if condition="{vh:Validation.FieldTypeFromValidation(field:field)} == 'number'">
+	<f:then>
+		<div id="powermail_fieldwrap_{field.marker}" class="form-group powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_{field.marker} {field.css} {settings.styles.framework.fieldAndLabelWrappingClasses} col-12 col-md">
+			<label for="powermail_field_{field.marker}" class="{settings.styles.framework.labelClasses}" title="{field.description}">
+				{field.title}<span class="mandatory{f:if(condition:field.mandatory, else:' d-none')}">*</span>
+			</label>
+
+			<f:form.textfield
+				type="{vh:Validation.FieldTypeFromValidation(field:field)}"
+				property="{field.marker}"
+				placeholder="{field.placeholder}"
+				value="{vh:Misc.PrefillField(field:field, mail:mail)}"
+				class="form-control powermail_input {settings.styles.framework.fieldClasses} {vh:Validation.ErrorClass(field:field, class:'powermail_field_error')}"
+				additionalAttributes="{vh:Validation.ValidationDataAttribute(field:field)}"
+				id="powermail_field_{field.marker}" />
+		</div>
+	</f:then>
+	<f:else>
+		<f:if condition="{field.css} == 'disabled_text_only'">
+			<f:then>
+				<div id="powermail_fieldwrap_{field.marker}" class="form-group powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_{field.marker} {field.css} {settings.styles.framework.fieldAndLabelWrappingClasses} col-12">
+					<label for="powermail_field_{field.marker}" class="{settings.styles.framework.labelClasses} d-none" title="{field.description}">
+						{field.title}<span class="mandatory{f:if(condition:field.mandatory, else:' d-none')}">*</span>
+					</label>
+
+					<div class="{settings.styles.framework.fieldWrappingClasses} ">
+						<f:form.textarea
+							property="{field.marker}"
+							placeholder="{field.placeholder}"
+							value="{vh:Misc.PrefillField(field:field, mail:mail)}"
+							readonly="1" 
+							style="resize: none;"
+							class="form-control-plaintext powermail_input {settings.styles.framework.fieldClasses} {vh:Validation.ErrorClass(field:field, class:'powermail_field_error')}"
+							additionalAttributes="{vh:Validation.ValidationDataAttribute(field:field)}"
+							id="powermail_field_{field.marker}" />
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<f:render section="plain" arguments="{_all}" />
+			</f:else>
+		</f:if>
+	</f:else>
+</f:if>
+
+<f:section name="plain">
+	<div id="powermail_fieldwrap_{field.marker}" class="form-group powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_{field.marker} {field.css} {settings.styles.framework.fieldAndLabelWrappingClasses} col-12 col-md">
+		<label for="powermail_field_{field.marker}" class="{settings.styles.framework.labelClasses}" title="{field.description}">
+			{field.title}<span class="mandatory{f:if(condition:field.mandatory, else:' d-none')}">*</span>
+		</label>
+
+		<div class="{settings.styles.framework.fieldWrappingClasses} ">
+			<f:form.textfield
+				type="{vh:Validation.FieldTypeFromValidation(field:field)}"
+				property="{field.marker}"
+				placeholder="{field.placeholder}"
+				value="{vh:Misc.PrefillField(field:field, mail:mail)}"
+				class="form-control powermail_input {settings.styles.framework.fieldClasses} {vh:Validation.ErrorClass(field:field, class:'powermail_field_error')}"
+				additionalAttributes="{vh:Validation.ValidationDataAttribute(field:field)}"
+				id="powermail_field_{field.marker}" />
+		</div>
+	</div>
+</f:section>

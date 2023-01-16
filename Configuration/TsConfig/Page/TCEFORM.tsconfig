@@ -1,0 +1,23 @@
+TCEFORM.tt_content {
+#  layout.addItems.51 = Simple layout
+}
+
+[globalVar = GP:defVals|tt_content|tx_gridelements_backend_layout==2cols]
+  #TCEFORM.tt_content.layout.addItems.60 = kolumna
+[global]
+tx_news.templateLayouts {
+#  61 = Lista newsów na stronie debaty - małe (IZwOZ)
+}
+
+TCEFORM {
+    tx_powermail_domain_model_form {
+        css {
+            removeItems = layout1, layout2, layout3
+            addItems {
+                disabled_text_only = Disabled text only
+            }
+        }
+    }
+    tx_powermail_domain_model_page < .tx_powermail_domain_model_form
+    tx_powermail_domain_model_field < .tx_powermail_domain_model_form
+}

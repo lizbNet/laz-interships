@@ -1,0 +1,66 @@
+plugin {
+  tx_powermail {
+    view { 
+      layoutRootPath   = EXT:lazarski_interships/ext/powermail/Resources/Private/Layouts/
+      partialRootPath  = EXT:lazarski_interships/ext/powermail/Resources/Private/Partials/
+      templateRootPath = EXT:lazarski_interships/ext/powermail/Resources/Private/Templates/
+    }
+    settings {
+      styles.bootstrap.bootstrapPath = 1
+      styles.bootstrap.numberOfColumns = 0
+      main {
+        confirmation = 0
+        optin = 0
+        moresteps = 0
+      }
+      misc {
+        ajaxSubmit = 1
+        debugVariables = 0
+        debugMail = 1
+      }
+      sender {
+        overwrite.senderEmail  = no_reply@lazarski.edu.pl
+        overwrite.senderName   = Uczelnia £azarskiego
+      }
+      receiver{
+        overwrite.senderEmail  = no_reply@lazarski.edu.pl
+        default.senderName     = Klub Absolwenta - formularz
+        default.senderEmail    = no_reply@lazarski.edu.pl
+        attachment = 0
+      }
+    }  
+  }
+  tx_bootstrap_package {
+    view {
+      layoutRootPaths   = EXT:lazarski_interships/Resources/Private/Layouts/Page/
+      partialRootPaths  = EXT:lazarski_interships/Resources/Private/Partials/Page/
+      templateRootPaths = EXT:lazarski_interships/Resources/Private/Templates/Page/
+    }
+  }
+      
+  bootstrap_package_contentelements {
+    view {
+      layoutRootPath   = EXT:lazarski_interships/Resources/Private/Layouts/ContentElements/
+      partialRootPath  = EXT:lazarski_interships/Resources/Private/Partials/ContentElements/
+      templateRootPath = EXT:lazarski_interships/Resources/Private/Templates/ContentElements/
+    }
+  }
+  
+  tx_felogin_pi1 {
+    storagePid = 0
+  }
+
+  t3colorbox {
+    themepath          = EXT:lazarski_interships/ext/t3colorbox/Resources/Public/Css/colorbox.css
+    includejquerycore  = 0
+  }
+    
+}
+
+page {
+  fluidtemplate {
+    layoutRootPath    = EXT:lazarski_interships/Resources/Private/Layouts/Page/
+    partialRootPath   = EXT:lazarski_interships/Resources/Private/Partials/Page/
+    templateRootPath  = EXT:lazarski_interships/Resources/Private/Templates/Page/
+  }
+}

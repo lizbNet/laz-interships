@@ -1,0 +1,215 @@
+{namespace bk2k = BK2K\BootstrapPackage\ViewHelpers}
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <v:variable.set name="colPosition" value="{data.colPos}" />
+
+    <f:if condition="{v:content.info(contentUid:'{data.tx_gridelements_container}', field:'layout')}">
+        <v:variable.set name="parentLayout" value="{v:content.info(contentUid:'{data.tx_gridelements_container}', field:'layout')}" />
+    </f:if>
+    <f:if condition="{v:variable.register.get(name:'variables{data.uid}.parent_layout')}">
+        <v:variable.set name="parentLayout" value="{v:variable.register.get(name:'variables{data.uid}.parent_layout')}" />
+        <v:variable.set name="colPosition" value="-1" />
+    </f:if>
+
+    <f:switch expression="{colPosition}">
+        <f:case value="-1">
+            <f:switch expression="{parentLayout}">
+                <f:case value="lazarski_klub_absolwenta_featurette">
+                    <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} col-12 col-md-6 col-lg-4 d-flex align-items-center flex-column mb-5">
+                        <f:if condition="{data._LOCALIZED_UID}">
+                            <a id="c{data._LOCALIZED_UID}"></a>
+                        </f:if>
+                        <f:render section="Header" />
+                        <v:variable.set name="classes" value="d-flex" />
+                        <f:render partial="Media/Gallery" arguments="{_all}" />
+                        <f:render partial="Header/Header" arguments="{_all}" />
+                        <f:format.html>{data.bodytext}</f:format.html>
+                        <f:render partial="Header/SubHeader" arguments="{_all}" />
+                    </div>
+                </f:case>
+
+                <f:case value="lazarski_klub_absolwenta_partners_list">
+                    <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} h-100 align-items-center col-6 col-sm-4 col-md-2 {classes} mb-4 p-4">
+                        <f:if condition="{data._LOCALIZED_UID}">
+                            <a id="c{data._LOCALIZED_UID}"></a>
+                        </f:if>
+                        <f:render partial="Media/Gallery" arguments="{_all}" />
+                    </div>
+                </f:case>
+
+                <f:case value="lazarski_klub_absolwenta_slider">
+                    
+                    <f:if condition="{files}">
+                        <f:for each="{files}" as="file" iteration="fileIteration">
+                            <div id="c{data.uid}{file.uid}" class="mx-4 py-2">
+                                <f:image src="{file.uid}" width="150m" height="150m" crop="{file.crop}" treatIdAsReference="1" title="{file.title}" />
+                            </div>
+                        </f:for>
+                    </f:if>
+                </f:case>
+
+                <f:case value="lazarski_klub_absolwenta_partners_card">
+                    <div id="c{data.uid}" class="col-12 {sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} {classes}">
+                        <f:if condition="{data._LOCALIZED_UID}">
+                            <a id="c{data._LOCALIZED_UID}"></a>
+                        </f:if>
+
+                        <div class="row align-items-center mb-5">
+                            <f:if condition="{v:variable.register.get(name:'contentElement{data.uid}.isOdd')} == '1'">
+                                <f:then>
+                                    <div class="col-12 col-md-3 text-center order-xl-2">
+                                        <f:if condition="{files}">
+                                            <f:for each="{files}" as="file" iteration="fileIteration">
+                                                <f:image src="{file.uid}" width="200m" height="200m" crop="{file.crop}" treatIdAsReference="1" title="{file.title}" class="p-lg-2 img-fluid" />
+                                                
+                                            </f:for>
+                                        </f:if>
+                                    </div>
+                                    <div class="col-12 col-md-9 text-xl-right order-xl-1">
+                                        <f:render partial="Header/All" arguments="{_all}" />
+                                        <f:format.html>{data.bodytext}</f:format.html>
+                                    </div>
+                                </f:then>
+
+                                <f:else>
+                                    <div class="col-12 col-md-3 text-center">
+                                        <f:if condition="{files}">
+                                            <f:for each="{files}" as="file" iteration="fileIteration">
+                                                <f:image src="{file.uid}" width="200m" height="200m" crop="{file.crop}" treatIdAsReference="1" title="{file.title}" class="p-lg-2 img-fluid" />
+                                                
+                                            </f:for>
+                                        </f:if>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <f:render partial="Header/All" arguments="{_all}" />
+                                        <f:format.html>{data.bodytext}</f:format.html>
+                                    </div>
+                                </f:else>
+                            </f:if>
+
+                        </div>
+                    </div>
+                </f:case>
+
+                <f:case default="true">
+                    <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} {classes}">
+                        <f:if condition="{data._LOCALIZED_UID}">
+                            <a id="c{data._LOCALIZED_UID}"></a>
+                        </f:if>
+                        <f:render section="Header" />
+                        <f:render section="Main" />
+                    </div>
+                </f:case>
+
+            </f:switch>
+        </f:case>
+
+        <f:case value="1">
+            <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} h-100  {classes}">
+                <f:if condition="{data._LOCALIZED_UID}">
+                    <a id="c{data._LOCALIZED_UID}"></a>
+                </f:if>
+                <f:render section="Header" />
+                <f:render section="Main" />
+            </div>
+        </f:case>
+
+        <f:case value="33">
+            <div id="c{data.uid}" class="default {sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} h-100  {classes}">
+                <f:if condition="{data._LOCALIZED_UID}">
+                    <a id="c{data._LOCALIZED_UID}"></a>
+                </f:if>
+
+                <div class="element h-100 ce-text-media-above">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div class="col align-self-center">
+                                <div id="header" class="h-100">                             
+                                    <div class="header" style="position: relative;">
+                                        <f:if condition="{data.header}">
+                                            <f:switch expression="{data.header_layout}">
+                                                <f:case value="1">
+                                                    <h1 class="{f:if(condition: data.header_position, then: 'text-{data.header_position}')}">
+                                                       <f:format.htmlentitiesDecode>{data.header}</f:format.htmlentitiesDecode>
+                                                    </h1>
+                                                </f:case>
+                                                <f:case value="2">
+                                                    <h2 class="{f:if(condition: data.header_position, then: 'text-{data.header_position}')}">
+                                                        <f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink>
+                                                    </h2>
+                                                </f:case>
+                                                <f:case default="1">
+                                                    <h1 class="{f:if(condition: data.header_position, then: 'text-{data.header_position}')}">
+                                                        <f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink>
+                                                    </h1>
+                                                </f:case>
+                                            </f:switch>
+                                        </f:if>
+                                    </div>
+                                    <div class="col-12 col-md-6 text-white lead sub-header" style="position: relative;">
+                                        <f:format.html>{data.bodytext}</f:format.html>
+                                    </div>  
+
+                                    <f:if condition="{files -> f:count()} > 0">
+                                        <f:then>
+                                            <f:if condition="{files -> f:count()} > 1">
+                                                <f:then>
+                                                    <f:if condition="{files.0.type} == 2">
+                                                        <f:then>
+                                                            <img src="{f:uri.image(image: files.0)}"
+                                                                 title="{files.0.title}"
+                                                                 alt="{files.0.alternative}"
+                                                                 class="first-slide"  
+                                                                 />
+                                                                 <style>
+                                                                    .fp-slide .default{
+                                                                        background-image: url(<f:uri.image image="{files.1}" width="1920c" />);
+                                                                    }
+                                                                 </style>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <img src="{f:uri.image(image: files.0)}"
+                                                                 title="{files.0.title}"
+                                                                 alt="{files.0.alternative}"
+                                                                 class="first-slide"  
+                                                                 />
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:then>
+                                                <f:else>
+                                                    <img src="{f:uri.image(image: files.0)}"
+                                                         title="{files.0.title}"
+                                                         alt="{files.0.alternative}"
+                                                         class="first-slide"  
+                                                         />
+                                                </f:else>
+                                            </f:if>
+                                        </f:then>
+                                        <f:else>
+                                            <div class="col-md-12" data-equalheight="item">
+                                                <f:render partial="Media/Type" arguments="{file: data.files.0, data: data, settings: settings}" />
+                                            </div>
+                                        </f:else>
+                                    </f:if>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:case>
+
+        <f:case default="TRUE">
+            <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} {classes}  mb-5">
+                <f:if condition="{data._LOCALIZED_UID}"><a id="c{data._LOCALIZED_UID}"></a></f:if>
+                <f:render section="Header" />
+                <f:render section="Main" />    
+            </div>
+        </f:case>
+    </f:switch>
+
+</html>

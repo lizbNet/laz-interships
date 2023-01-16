@@ -1,0 +1,206 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:layout name="Default" />
+Show Confirmation Page
+{powermail_rte} Variable is filled with values from RTE in backend (from thx page)
+{powermail_all} Outputs all fields
+{marker1}, {firstname}, etc.. Outputs a field
+{mail} Complete Mail Object
+{ttContentData} All values from content element with plugin
+{uploadService} All values from uploaded files
+<f:section name="main">
+    <f:comment>
+        <f:debug title="_all" inline="true">{_all}</f:debug>
+    </f:comment>
+    <div class="powermail_confirmation" data-powermail-form="{mail.form.uid}">
+        <f:comment>
+        <h1>
+            <f:translate key="confirmation_message" />
+        </h1>
+            <f:format.raw>{powermail_all}</f:format.raw>
+        </f:comment>
+        <div class="position-relative" style="z-index:0;margin-left: -15px;margin-right: -15px;">
+            <div class="container py-5 position-relative" style="z-index:1">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="ratio ratio-21x9">
+                            <div class="d-flex align-items-center">
+                                <h1 class="text-center text-primary fw-bolder">Czy podane informacje są poprawne?</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-n5">
+        	<div class="card-header pt-4 px-5 pb-3">
+                <div class="row align-items-center d-flex">
+                    <div class="col">
+                        <h3 class="text-primary">{offer_position}</h3>
+                        <p>{company_name}</p>
+                    </div>
+                    <f:if condition="{company_logo}">
+	                    <div class="col-auto">
+	                        <f:image src="{settings.misc.file.folder}{company_logo}" alt="logo" maxHeight="80" />
+	                    </div>
+	                </f:if>
+                </div>
+        	</div>
+            <div class="card-body pt-4 px-5 pb-5">
+            	<f:if condition="{offer_type} == 'practice'">
+			    	<div class="row">
+			    		<div class="col-4 border-end">
+			    			<h4>Oferta:</h4>
+			    			<p>Praktyki studenckie</p>
+			    		</div>
+			    		<div class="col-4 border-end">
+			    			<h4>Rodzaj praktyki:</h4>
+			    			<f:switch expression="{offer_practice}">
+	                    	   	<f:case value="free">
+	                    	   		<p>Bezpłatne</p>
+	                           	</f:case>
+	                    	   	<f:case value="payed">
+	                    	   		<p>Płatne</p>
+	                           	</f:case>
+                            </f:switch>
+			    		</div>
+			    		<div class="col-4">
+			    			<h4>Długość trwania umowy:</h4>
+			    			<p>{offer_practice_length} godz.</p>
+			    		</div>
+			    	</div>
+			    </f:if>
+		    	<f:if condition="{offer_type} == 'work'">
+			    	<div class="row">
+			    		<div class="col-6 border-end">
+			    			<h4>Oferta:</h4>
+			    			<p>Praca</p>
+			    		</div>
+			    		<div class="col-6 border-end">
+			    			<h4>Rodzaj umowy:</h4>
+			    			<f:switch expression="{offer_work_type}">
+	                    	   	<f:case value="commission">
+	                    	   		<p>Umowa zlecenie</p>
+	                           	</f:case>
+	                    	   	<f:case value="work">
+	                    	   		<p>Umowa o pracę</p>
+	                           	</f:case>
+                            </f:switch>
+			    		</div>
+			    	</div>
+			    </f:if>
+			    <hr>
+                <table class="table table-responsive" style="vertical-align:middle">
+                    <tbody>
+
+                        <f:if condition="{offer_workplace_mode}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_workplace_mode}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{offer_workplace_mode}</td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_by_www}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_by_www}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{offer_by_www}</td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_email}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_email}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{offer_email}</td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_www}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_www}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{offer_www}</td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_place}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_place}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{offer_place}</td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_expire}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_expire}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{offer_expire}</td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_duties}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_duties}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type"><f:format.nl2br>{offer_duties}</f:format.nl2br></td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_requirements}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_requirements}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type"><f:format.nl2br>{offer_requirements}</f:format.nl2br></td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{offer_benefits}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_offer_benefits}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type"><f:format.nl2br>{offer_benefits}</f:format.nl2br></td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{company_about}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_company_about}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type"><f:format.nl2br>{company_about}</f:format.nl2br></td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{company_submiter}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_company_submiter}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{company_submiter}</td>
+                            </tr>
+                        </f:if>
+                        <f:if condition="{company_email}">
+                            <tr>
+                                <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_company_email}</th>
+                                <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{company_email}</td>
+                            </tr>
+                        </f:if>
+                        <tr class="d-none">
+                            <th class="powermail_all_label powermail_all_type_radio powermail_all_marker_offer_type">{label_dgpr}</th>
+                            <td class="powermail_all_value powermail_all_type_radio powermail_all_marker_offer_type">{dgpr}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group" role="group">
+                    <f:comment>
+                        Link: Back to form
+                    </f:comment>
+                    <f:form action="form" section="c{ttContentData.uid}" name="field" enctype="multipart/form-data" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" addQueryString="{settings.misc.addQueryString}" additionalAttributes="{vh:validation.enableParsleyAndAjax(form: mail.form)}">
+                        <f:render section="HiddenFields" arguments="{_all}" />
+                        <f:form.submit value="{f:translate(key: 'confirmation_prev')}" additionalAttributes="{data-powermail-form-ajax:'confirmation'}" class="btn btn-link" />
+                    </f:form>
+                    <f:comment>
+                        Link: Submit form
+                    </f:comment>
+                    <f:form action="create" section="c{ttContentData.uid}" name="field" enctype="multipart/form-data" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" addQueryString="{settings.misc.addQueryString}" additionalAttributes="{vh:validation.enableParsleyAndAjax(form: mail.form)}">
+                        <f:render section="HiddenFields" arguments="{_all}" />
+                        <f:form.submit value="{f:translate(key: 'confirmation_next')}" additionalAttributes="{data-powermail-form-ajax:'submit'}" class="btn btn-primary" />
+                    </f:form>
+                </div>
+            </div>
+</f:section>
+<f:section name="HiddenFields">
+    <f:for each="{mail.answers}" as="answer">
+        <f:if condition="{vh:condition.isArray(val:answer.value)}">
+            <f:then>
+                <f:for each="{answer.value}" as="subvalue" iteration="i">
+                    <f:form.hidden property="{answer.field.marker}.{i.index}" value="{subvalue}" />
+                </f:for>
+            </f:then>
+            <f:else>
+                <f:form.hidden property="{answer.field.marker}" value="{answer.value}" />
+            </f:else>
+        </f:if>
+    </f:for>
+    <f:form.hidden name="mail[form]" value="{mail.form.uid}" class="powermail_form_uid" />
+</f:section>

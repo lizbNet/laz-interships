@@ -1,0 +1,90 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<v:variable.set name="lang" value="{v:page.language( languages: {0:'pl', 3:'en'} )}" />
+
+<!--
+	=====================
+		Partials/MenuTop.html
+-->
+<v:page.rootline as="rootline">
+	<f:for each="{rootline}" as="rootlinePage" iteration="iterator">
+		<f:if condition="{iterator.isLast}">
+			<v:variable.set name="rootpageUid" value="{rootlinePage.uid}" />
+		</f:if>				
+	</f:for>
+</v:page.rootline>
+		
+
+
+<div class="navigation hidden-xs">
+    <ul>
+		<v:menu as="menu" lang="EN">
+		<f:for each="{menu}" as="menuElement" key="menuKey" >
+			<li >
+				<f:if condition="{menuElement.current}">
+					<f:then>
+						<span class="{menuElement.class}">
+							<f:if condition="{menuElement.title} == 'O Instytucie'">
+								<f:then>{menuElement.title}</f:then>
+								<f:else>
+									<v:format.replace content="{menuElement.title}" substring=" " replacement="<br>" count="0" />
+								</f:else>
+							</f:if>
+						</span>
+					</f:then>
+					<f:else>
+						<f:link.page pageUid="{menuElement.uid}" class="{menuElement.class}">
+							<f:if condition="{menuElement.title} == 'O Instytucie'">
+								<f:then>{menuElement.title}</f:then>
+								<f:else>
+									<v:format.replace content="{menuElement.title}" substring=" " replacement="<br>" count="0" />
+								</f:else>
+							</f:if>
+							<f:comment>
+							    <v:format.pregReplace subject="{menuElement.title}" pattern="\s\w{2,}" replacement="br" />
+							</f:comment>
+						</f:link.page>
+					</f:else>
+				</f:if>
+			</li>
+		</f:for>
+		</v:menu>
+    </ul>
+    <ul>
+        <li>
+            <f:link.page pageUid="414">Centrum <br>Kształcenia <br>Podyplomowego</f:link.page>
+        </li>
+        <li>
+            <a href="https://www.lazarski.pl">Uczelnia <br>Łazarskiego</a>
+        </li>
+    </ul>
+</div>
+<button class="hamburger hidden-md hidden-lg hidden-sm">&#x2261;</button>
+<button class="cross" style="color:white;">&#735;</button>
+<div class="menu">  
+    <ul>
+		<v:menu as="menu" lang="EN">
+		<f:for each="{menu}" as="menuElement" key="menuKey" >
+			<li >
+				<f:if condition="{menuElement.current}">
+					<f:then>
+						<span class="{menuElement.class}">{menuElement.title}</span>
+					</f:then>
+					<f:else>
+						<f:link.page pageUid="{menuElement.uid}" class="{menuElement.class}">
+							{menuElement.title}
+						</f:link.page>
+					</f:else>
+				</f:if>
+			</li>
+		</f:for>
+		</v:menu>
+    </ul>
+    <ul>
+        <li>
+            <f:link.page pageUid="https://ckp.lazarski.pl">Centrum Kształcenia Podyplomowego</f:link.page>
+        </li>
+        <li>
+            <a href="https://www.lazarski.pl">Uczelnia Łazarskiego</a>
+        </li>
+    </ul>
+</div>

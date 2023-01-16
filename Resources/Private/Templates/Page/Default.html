@@ -1,0 +1,56 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Page" />
+<f:section name="Main">
+    <v:page.rootline as="rootline">
+        <f:for each="{rootline}" as="rootlinePage" iteration="iterator">
+            <f:if condition="{iterator.isLast}">
+                <v:variable.set name="rootpageUid" value="{rootlinePage.uid}" />
+            </f:if>
+        </f:for>
+    </v:page.rootline>
+    {v:page.resources.fal(table:'pages', field:'media', uid:data.uid, slide:1) -> v:variable.set(name:'headerImage')}
+    <f:for each="{headerImage}" as="contentOfVariable" iteration="i">
+        <v:variable.set name="total" value="{i.total}" />
+    </f:for>
+    <header class="container-fluid">
+        <div class="row py-3">
+            <div class="container bg-white">
+                <div class="row">
+                    <div class="col-auto">
+                        <img src="/typo3conf/ext/lazarski_interships/Resources/Public/Images/lazarski_logo_pl.png" style="width:80px" />
+                    </div>
+                    <div class="col align-items-center d-flex"><h4 class="text-muted fw-light mb-0"><a href="/" class="text-decoration-none" title="Portal praktyk Uczelni Łazarskiego">Portal praktyk</a></h4></div>
+                    <div class="col align-items-center d-flex">
+                        <v:page.languageMenu id="language-menu" class="ml-auto text-right mb-0" tagName="ul" tagNameChildren="li" defaultIsoFlag="pl" defaultLanguageLabel="Polski" hideNotTranslated="1" layout="flag" useCHash="1" flagImageType="svg" linkCurrent="0" classCurrent="current" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="position-absolute vw-100" style="z-index:0;margin-left: -15px;margin-right: -15px;">
+        <div id="hero-bg" class="position-absolute top-0 bottom-0 start-0 end-0" style="z-index:0"></div>
+        <div class="container py-5 position-relative" style="z-index:1">
+            <div class="row">
+                <div class="col-6">
+                    <div class="ratio ratio-21x9"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container content-main">
+        <div class="row">
+            <div class="col content mb-5">
+                <v:content.render column="0" pageUid="{data.uid}" />
+            </div>
+        </div>
+    </section>
+    <f:comment>
+        <!--
+				<div class="col">
+					<p class="small text-muted">Uprzejmie informujemy, że posiadają Państwo prawo dostępu do swoich danych włącznie z możliwością ich poprawiania. Mogą Państwo cofnąć swoją zgodę. Mają Państwo również prawo wystąpić z pisemnym żądaniem zaprzestania przetwarzania tych danych. <br>Podanie danych osobowych jest dobrowolne jednak bez ich podania nie można dokonać rejestracji</p>
+					<hr>
+				</div>
+			-->
+    </f:comment>
+    <f:render partial="Footer" arguments="{_all}" />
+</f:section>

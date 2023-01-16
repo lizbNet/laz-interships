@@ -1,0 +1,74 @@
+{namespace bk2k = BK2K\BootstrapPackage\ViewHelpers}
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+<f:switch expression="{data.section_frame}">
+    <f:case value="1"><bk2k:var name="sectionClass" value="noline" /></f:case>
+    <f:case value="5"><bk2k:var name="sectionClass" value="smallpadding" /></f:case>
+    <f:case value="6"><bk2k:var name="sectionClass" value="contactbox" /></f:case>
+    <f:case value="10"><bk2k:var name="sectionClass" value="accordion-link" /></f:case>
+    <f:case value="11"><bk2k:var name="sectionClass" value="col-xs-9 col-xs-push-3" /></f:case>
+    <f:case value="12"><bk2k:var name="sectionClass" value="col-xs-9" /></f:case>
+    <f:case value="20"><bk2k:var name="sectionClass" value="well" /></f:case>
+    <f:case value="21"><bk2k:var name="sectionClass" value="insert-content" /></f:case>
+    <f:case default="TRUE"><bk2k:var name="sectionClass" value="default" /></f:case>
+</f:switch>
+
+<f:switch expression="{data.colPos}">
+    <f:case value="-1">
+
+        <f:switch expression="{v:content.info(contentUid:'{data.tx_gridelements_container}', field:'layout')}">
+            <f:case value="lazarski_klub_absolwenta_featurette">
+                <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} col-12 col-lg-4 d-flex align-items-center flex-column">
+                    <f:if condition="{data._LOCALIZED_UID}">
+                        <a id="c{data._LOCALIZED_UID}"></a>
+                    </f:if>
+                    <f:render section="Header" />
+                    <f:render section="Main" />
+                </div>
+            </f:case>
+
+            <f:case value="lazarski_klub_absolwenta_featurette2">
+                <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} h-100  {classes}">
+                    <f:if condition="{data._LOCALIZED_UID}">
+                        <a id="c{data._LOCALIZED_UID}"></a>
+                    </f:if>
+                    <f:render section="Header" />
+                    <f:render section="Main" />
+                </div>
+            </f:case>
+
+            <f:case default="true">
+                <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} {classes}">
+                    <f:if condition="{data._LOCALIZED_UID}">
+                        <a id="c{data._LOCALIZED_UID}"></a>
+                    </f:if>
+                    <f:render section="Header" />
+                    <f:render section="Main" />
+                </div>
+            </f:case>
+
+        </f:switch>
+    </f:case>
+
+    <f:case value="1">
+        <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} h-100  {classes}">
+            <f:if condition="{data._LOCALIZED_UID}">
+                <a id="c{data._LOCALIZED_UID}"></a>
+            </f:if>
+            <f:render section="Header" />
+            <f:render section="Main" />
+        </div>
+    </f:case>
+
+    <f:case default="TRUE">
+        <div id="c{data.uid}" class="{sectionClass} {data.bootstrap_container_extra_class} {data.bootstrap_container_2column_proportion} {classes}">
+            <f:if condition="{data._LOCALIZED_UID}"><a id="c{data._LOCALIZED_UID}"></a></f:if>
+            <f:render section="Header" />
+            <f:render section="Main" />    
+        </div>
+    </f:case>
+</f:switch>
+
+</html>

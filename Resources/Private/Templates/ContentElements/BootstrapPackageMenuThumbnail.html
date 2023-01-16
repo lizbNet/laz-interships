@@ -1,0 +1,39 @@
+<f:layout name="Default"/>
+<f:section name="Header">
+    <f:render partial="Header/All" arguments="{_all}" />
+
+</f:section>
+<f:section name="Main">
+
+    <f:if condition="{menu}">
+        <div class="row menuthumb" data-equalheight="container">
+            <f:for each="{menu}" as="page">
+                <f:if condition="{page.files.0}">
+                    <f:if condition="{page.files.0.type} == 2">
+
+                        <div class="box-thumb-menu col-xl-6 mb-3">
+                            <f:link.page pageUid="{page.data.uid}" title="{page.data.title}" class="thumbnail d-flex flex-row" data="{equalheight: 'item', toggle: 'tooltip'}">
+                                <div class="thumbnail-image col-3">
+                                    <f:image image="{page.files.0}" width="300c" height="300c" class="img-fluid" />
+                                </div>
+                                <div class="thumbnail-caption col-9">
+                                    <f:if condition="{page.data.title}">
+                                        <h3><f:format.crop maxCharacters="{settings.title.crop}">{page.data.title}</f:format.crop></h3>
+                                    </f:if>
+                                    <f:if condition="{page.data.subtitle}">
+                                        <div class="subtitle small"><strong><f:format.crop maxCharacters="{settings.title.crop}">{page.data.subtitle}</f:format.crop></strong></div>
+                                    </f:if>
+                                    <f:if condition="{page.data.abstract}">
+                                        <p class="small"><f:format.crop maxCharacters="115">{page.data.abstract}</f:format.crop></p>
+                                    </f:if>
+                                </div>
+                            </f:link.page>
+                        </div>
+
+                    </f:if>
+                </f:if>
+            </f:for>
+        </div>
+    </f:if>
+
+</f:section>

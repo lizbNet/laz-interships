@@ -1,0 +1,249 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default" />
+
+Render Powermail_Frontend Show View
+{mail} 			Mail Object
+
+
+<f:section name="main">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+	<f:alias map="{flashMessageClass:'powermail_message_error'}">
+		<f:render partial="Misc/FlashMessages" arguments="{_all}" />
+	</f:alias>
+
+	<f:for each="{fields}" as="field">
+		<f:for each="{mail.answers}" as="answer">
+			<f:if condition="{answer.field} == {field}">
+				<v:variable.set name="variable_{field.marker}" value="{answer.value}" />
+			</f:if>
+		</f:for>
+	</f:for>
+
+	<div class="p-5 mb-4 rounded-3 position-relative">
+		<style type="text/css">
+			#hero-bg:before {
+			    background-image: url(/typo3conf/ext/lazarski_interships/Resources/Public/Images/bg02g.jpg);
+			}
+		</style>
+		<div id="hero-bg" class="position-absolute top-0 bottom-0 start-0 end-0 d-none" style="z-index:0"></div>
+		<f:link.page pageUid="{listPid}" class="powermail_frontend_back fs-1 position-absolute top-0 start-0 mt-3 ms-4" style="z-index:1">
+			<i class="bi bi-arrow-left-circle"></i><span class="d-none"><f:translate key="Back">Back</f:translate></span>
+		</f:link.page>
+		<div class="container-fluid py-5 position-relative" style="z-index:1">
+			<h1 class="text-white"><small class="fw-light">Stanowisko:</small><br><span class="display-5 fw-bold">{variable_offer_position}</span></h1>
+			<p class="col-md-8 fs-4 text-white"></p>
+		</div>
+    </div>
+
+    <div class="container">
+        <div class="card mt-n5">
+        	<div class="card-header pt-4 px-4 pb-3">
+		    	<f:if condition="{variable_offer_type} == 'practice'">
+			    	<div class="row">
+			    		<div class="col-4 col-md border-end">
+			    			<div class="row">
+				    			<div class="col-auto pe-0">
+				    				<h5><i class="bi bi-file-earmark-person"></i></h5>
+				    			</div>
+								<div class="col"><h5>Rodzaj oferty:</h5>
+				    				<p>Praktyki studenckie</p>
+				    			</div>
+				    		</div>
+			    		</div>
+			    		<div class="col-4 col-md border-end">
+			    			<div class="row">
+			    				<div class="col-auto pe-0"><h5><i class="bi bi-file-earmark-text"></i></h5></div>
+								<div class="col">
+									<h5>Rodzaj oferty:</h5>
+					    			<f:switch expression="{variable_offer_practice}">
+				                	   	<f:case value="free">
+				                	   		<p>Bezpłatne</p>
+				                       	</f:case>
+				                	   	<f:case value="payed">
+				                	   		<p>Płatne</p>
+				                       	</f:case>
+				                    </f:switch>
+				                </div>
+				            </div>
+			    		</div>
+			    		<div class="col-4 col-md">
+			    			<div class="row">
+			    				<div class="col-auto pe-0"><h5><i class="bi bi-calendar2"></i></h5></div>
+								<div class="col">
+					    			<h5>Długość trwania umowy:</h5>
+					    			<p>{variable_offer_practice_length} godz.</p>
+					    		</div>
+					    	</div>
+			    		</div>
+			    	</div>
+			    </f:if>
+		    	<f:if condition="{variable_offer_type} == 'work'">
+			    	<div class="row">
+			    		<div class="col-4 col-md border-end">
+			    			<div class="row">
+			    				<div class="col-auto pe-0"><h5><i class="bi bi-person-badge"></i></h5></div>
+								<div class="col">
+									<h5>Rodzaj oferty:</h5>
+			    					<p>Oferta pracy</p>
+			    				</div>
+			    			</div>
+			    		</div>
+			    		<f:if condition="{variable_offer_work_type}">
+				    		<div class="col-4 col-md border-end">
+				    			<div class="row">
+				    				<div class="col-auto pe-0"><h5><i class="bi bi-file-text"></i></h5></div>
+									<div class="col">
+										<h5>Rodzaj umowy:</h5>
+						    			<f:switch expression="{variable_offer_work_type}">
+					                	   	<f:case value="commission">
+					                	   		<p>Umowa zlecenie</p>
+					                       	</f:case>
+					                	   	<f:case value="work">
+					                	   		<p>Umowa o pracę</p>
+					                       	</f:case>
+					                    </f:switch>
+					                </div>
+					            </div>
+				    		</div>
+				    	</f:if>
+				    	<f:if condition="{variable_offer_practice_length_optional}">
+				    		<f:then>
+					    		<div class="col-4 col-md">
+					    			<div class="row">
+					    				<div class="col-auto pe-0"><h5><i class="bi bi-calendar2"></i></h5></div>
+										<div class="col">
+											<h5>Długość trwania umowy:</h5>
+					    					<p>Ustalana indywidualnie</p>
+					    				</div>
+					    			</div>
+					    		</div>
+				    		</f:then>
+				    		<f:else>
+					    		<f:if condition="{variable_offer_practice_length}">
+						    		<div class="col-4 col-md">
+						    			<div class="row">
+						    				<div class="col-auto pe-0"><h5><i class="bi bi-calendar2"></i></h5></div>
+											<div class="col">
+												<h5>Długość trwania umowy:</h5>
+						    					<p>{variable_offer_practice_length} godz.</p>
+						    				</div>
+						    			</div>
+						    		</div>
+						    	</f:if>
+				    		</f:else>
+				    	</f:if>
+			    	</div>
+			    </f:if>
+			</div>
+		    <div class="card-body pt-4 px-5 pb-5">
+		    	<div class="row g-4">
+		    		<div class="col-12 d-none"><hr></div>
+		    		<div class="col-12 col-md-3 order-1">
+		    			<div class="sticky-top">
+							<f:for each="{fields}" as="field">
+								<f:for each="{mail.answers}" as="answer">
+									<f:if condition="{answer.field} == {field}">
+										<f:if condition="{answer.valueType} == 3">
+											<f:for each="{answer.value}" as="subValue" iteration="uploadIndex">
+												<f:if condition="{vh:condition.isImage(path:subValue)}">
+													<f:then>
+														<div class="row">
+															<div class="col text-center mt-4 mb-4">
+																<f:image class="img-fluid" src="{settings.misc.file.folder}{subValue}" alt="{subValue}" width="600" maxHeight="600" />
+															</div>
+														</div>
+													</f:then>
+												</f:if>
+											</f:for>
+										</f:if>
+									</f:if>
+								</f:for>
+							</f:for>
+							<hr>
+							<div class="row">
+								<div class="col-auto pe-0"><h5><i class="bi bi-bookmark"></i></h5></div>
+								<div class="col"><h5>Nazwa firmy:</h5><p>{variable_company_name}</p></div>
+							</div>
+							<div class="row">
+								<div class="col-auto pe-0"><h5><i class="bi bi-calendar-x"></i></h5></div>
+								<div class="col"><h5>Data wyganięcia oferty:</h5><p>{variable_offer_expire}</p></div>
+							</div>
+							<div class="row">
+								<div class="col-auto pe-0"><h5><i class="bi bi-geo-alt-fill"></i></h5></div>
+								<div class="col"><h5>Miejscowość:</h5><p>{variable_offer_place}</p></div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-auto pe-0"><h5><i class="bi bi-bullseye"></i></h5></div>
+								<div class="col"><h5>Ogłoszenie skierowane do:</h5>
+									<f:for each="{variable_offer_who}" as="offer_who_item">
+										<f:switch expression="{offer_who_item}">
+				                    	   	<f:case value="pia">Studentów wydziału prawa i administracji<br></f:case>
+			    	                	   	<f:case value="eiz">Studentów wydziału ekonomii i zarządzania</f:case>
+			                    	   </f:switch>
+									</f:for>
+								</div>
+							</div>
+							<div class="row">
+								<hr>
+								<span class="btn btn-primary btn-lg text-white d-none" type="button"><i class="bi bi-person-plus-fill"></i> aplikuj</span>
+								<f:if condition="{variable_offer_by_www}">
+									<f:then>
+<a 
+	href="https://kariera.lazarski.pl/pl/praktyki/?tx_powermail_pi1[field][offer_id]={mail.uid}&tx_powermail_pi1[field][offer_position]={variable_offer_position -> v:format.url.encode()}&tx_powermail_pi1[field][offer_company]={variable_company_name -> v:format.url.encode()}&tx_powermail_pi1[field][offer_by_www]=1&tx_powermail_pi1[field][offer_www]={variable_offer_www -> v:format.url.encode()}" 
+	class="btn btn-primary btn-lg text-white" 
+	type="button"><i class="bi bi-person-plus-fill"></i> aplikuj</a>
+									</f:then>
+									<f:else>
+<a 
+	href="https://kariera.lazarski.pl/pl/praktyki/?tx_powermail_pi1[field][offer_id]={mail.uid}&tx_powermail_pi1[field][offer_position]={variable_offer_position -> v:format.url.encode()}&tx_powermail_pi1[field][offer_company]={variable_company_name -> v:format.url.encode()}&tx_powermail_pi1[field][offer_by_www]=0&tx_powermail_pi1[field][offer_email]={variable_offer_email -> v:format.url.encode()}" 
+	class="btn btn-primary btn-lg text-white" 
+	type="button"><i class="bi bi-person-plus-fill"></i> aplikuj</a>
+									</f:else>
+								</f:if>
+								<code class="d-none">https://kariera.lazarski.pl/pl/praktyki/?tx_powermail_pi1[field][offer_id]={mail.uid}&tx_powermail_pi1[field][offer_position]={variable_offer_position -> v:format.url.encode()}&tx_powermail_pi1[field][offer_company]={variable_company_name -> v:format.url.encode()}&tx_powermail_pi1[field][offer_email]={variable_offer_email -> v:format.url.encode()}</code><br>
+							</div>
+						</div>
+		    		</div>
+		    		<div class="col-12 col-md-9">
+						<f:if condition="{variable_company_about}">
+			    			<div class="row">
+			    				<div class="col mb-4 fw-lighter">
+			    					{variable_company_about -> f:format.htmlentitiesDecode() -> f:sanitize.html()}
+			    					<hr>
+			    				</div>
+			    			</div>
+			    		</f:if>    			
+		    			<div class="row">
+		    			<f:if condition="{variable_offer_duties}">
+		    				<div class="col-12 col-md-12 mb-4">
+		    					<f:comment>
+			    					<h5>Zakres obowiązków:</h5>{variable_offer_duties -> f:format.nl2br()}
+			    				</f:comment>
+		    					<h5>Zakres obowiązków:</h5>{variable_offer_duties -> f:format.htmlentitiesDecode() -> f:sanitize.html()}
+		    				</div>
+			    		</f:if>
+		    			<f:if condition="{variable_offer_requirements}">
+		    				<div class="col-12 col-md-12 mb-4">
+		    					<h5>Wymagania:</h5>{variable_offer_requirements -> f:format.htmlentitiesDecode() -> f:sanitize.html()}
+		    				</div>
+		    			</div>
+		    			</f:if>
+		    			<f:if condition="{variable_offer_benefits}">
+		    				<div class="col-12 col-md-12 mb-4">
+		    					<h5>Benefity:</h5>{variable_offer_benefits -> f:format.htmlentitiesDecode() -> f:sanitize.html()}
+		    				</div>
+		    			</div>
+		    			</f:if>
+		    		</div>		    		
+		    	</div>
+		    	<div class="row">
+		    		<div class="col">
+		    		</div>
+		    	</div>
+		    </div>
+		</div>
+    </div>
+</f:section>

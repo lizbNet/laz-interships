@@ -1,0 +1,68 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Page" />
+
+<f:section name="Main">
+	<v:page.rootline as="rootline">
+		<f:for each="{rootline}" as="rootlinePage" iteration="iterator">
+			<f:if condition="{iterator.isLast}">
+				<v:variable.set name="rootpageUid" value="{rootlinePage.uid}" />
+			</f:if>				
+		</f:for>
+	</v:page.rootline>
+
+    <main style="width: 100%; max-width: 2000px; overflow: hidden; margin: 0 auto;">
+	    <header class="page_home" style="background-image:none;">
+            <div class="container-fluid">
+        		<div class="row">
+					<f:render partial="MenuTop" arguments="{_all}" />
+					<div class="container-fluid">
+						<div class="row">
+							<div class="background_two partners">
+								<div class="actuality_shape two">
+									<h3><b>Partnerzy</b></h3>
+									<h1 style="left: 0;">Partnerzy</h1>
+								</div>
+							</div>
+							<div class="col-lg-6 col-lg-offset-3">
+								<div class="header-logo">
+									<a href="/"><img class="img-responsive" src="{f:uri.resource(path:'Images/ico/logo.png', extensionName:'lazarski_instytut_izwoz')}" alt="logo"></a>
+								</div>
+							</div>
+							<div class="container partner">
+								<div class="row">
+									<div class="col-md-12" style="padding: 0px 0px;">
+										<div class="partners">
+											<h4>Partnerzy merytoryczni</h4>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<img src="{f:uri.resource(path:'Images/logotyp.jpg', extensionName:'lazarski_instytut_izwoz')}" alt="IZWOZ" class="logotype"/>
+										</div>
+										<div class="rectangle_partner"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 cooperation">
+										<div class="partners">
+											<h4>Współpracowaliśmy z:</h4>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<img src="{f:uri.resource(path:'Images/logotyp.jpg', extensionName:'lazarski_instytut_izwoz')}" alt="IZWOZ" class="logotype"/>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12" style="padding: 0px 0px;">
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<img src="{f:uri.resource(path:'Images/logotyp.jpg', extensionName:'lazarski_instytut_izwoz')}" alt="IZWOZ" class="logotype"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	            </div>
+	        </div>
+	    </header>
+		<f:render partial="Footer" arguments="{_all}" />
+	</main>
+</f:section>

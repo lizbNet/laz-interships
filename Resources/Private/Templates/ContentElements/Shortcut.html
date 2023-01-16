@@ -1,0 +1,17 @@
+{namespace mg=PrimeServices\LazarskiCkp\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="ContentFooter" />
+<f:section name="content">
+	{mg:Reference(records:'{data.records}', field:'uid') -> v:variable.set(name: 'records')}
+	<f:for each="{records}" as="element">
+		<v:variable.register.set value="{data.layout}" name="variables{element}.parent_layout" />
+		<v:content.render contentUids="{0:'{element}'}" />
+	</f:for>
+
+	<f:comment>
+	<!--
+		<f:format.raw>{shortcuts}</f:format.raw>
+	-->
+	</f:comment>
+</f:section>
